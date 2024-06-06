@@ -1,4 +1,6 @@
-CREATE TABLE IF NOT EXISTS public."HeDaoTao"
+-------------------------------------------------------------------------------------
+--Create tables
+CREATE TABLE public."HeDaoTao"
 (
     "TenHDT" character(100)  NOT NULL,
     "MaHDT" character(100) NOT NULL,
@@ -6,37 +8,25 @@ CREATE TABLE IF NOT EXISTS public."HeDaoTao"
     CONSTRAINT "HeDaoTao_pkey" PRIMARY KEY ("MaHDT")
 );
 
-
-
-
-
-CREATE TABLE IF NOT EXISTS public."Lop"
+CREATE TABLE public."Lop"
 (
     "TenLop" character varying(100)  NOT NULL,	
     "MaLop" character(100)   NOT NULL,
-	"TenHDT" character(100)   NOT NULL,
+	"MaHDT" character(100)   NOT NULL,
     "Nganh" character(100)  NOT NULL,
     "Khoa" character(100) NOT NULL,
     "SiSo" integer NOT NULL,	
     "LopTruong" character varying(100) NOT NULL,    
 	
-    CONSTRAINT "Lop_pkey" PRIMARY KEY ("MaLop"),
-	
-    CONSTRAINT "Lop_HeDT" FOREIGN KEY ("TenHDT")
-        REFERENCES public."HeDaoTao" ("TenHDT") MATCH SIMPLE
+    CONSTRAINT "Lop_pkey" PRIMARY KEY ("MaLop"), 
+    CONSTRAINT "Lop_HeDT" FOREIGN KEY ("MaHDT")
+        REFERENCES public."HeDaoTao" ("MaHDT") MATCH SIMPLE
 );
 
-
-
-
-
-
-
-
-CREATE TABLE IF NOT EXISTS public."SinhVien"
+CREATE TABLE public."SinhVien"
 (
-    "MaSV" character varying(10) NOT NULL,
-    "TenSV" character(100)  NOT NULL,
+    "MaSV" character(10) NOT NULL,
+    "TenSV" character varying(100)  NOT NULL,
     "MaLop" character(100)  NOT NULL,
     "NienKhoa" integer NOT NULL,
 
@@ -45,10 +35,7 @@ CREATE TABLE IF NOT EXISTS public."SinhVien"
         REFERENCES public."Lop" ("MaLop") MATCH SIMPLE
 );
 
-
-
-
-CREATE TABLE IF NOT EXISTS public."HocPhan"
+CREATE TABLE public."HocPhan"
 (
     "MaHP" character(100)  NOT NULL,
     "TenHP" character(100)  NOT NULL,
@@ -58,33 +45,54 @@ CREATE TABLE IF NOT EXISTS public."HocPhan"
     CONSTRAINT "HocPhan_pkey" PRIMARY KEY ("MaHP")
 );
 
-
-
-
-
-
-CREATE TABLE IF NOT EXISTS public."LopHoc"
+CREATE TABLE public."GiangVien"
 (
-    "MaLopHoc" character(100)  NOT NULL,
-    "DiaChi" character(100) NOT NULL,
+    "MaGV" character(10) NOT NULL,
+    "TenGV" character varying(100)  NOT NULL,
+    "GioiTinh" character(10)  NOT NULL,
+    "DiaDiem" character(100) NOT NULL,
+    "Email" character(100) NOT NULL,
+    "SDT" integer NOT NULL, 
+
+    CONSTRAINT "GiangVien_pkey" PRIMARY KEY ("MaGV")
+);
+
+CREATE TABLE public."LopHoc"
+(
+    "MaLopHoc" character(10)  NOT NULL,
+    "Ky" character(10)  NOT NULL,
+    "DiaDiem" character(100) NOT NULL,
     "MaHP" character(10)  NOT NULL,
     "TenLop" character varying(100) NOT NULL,
     "ThoiGian" date NOT NULL,
     "SiSo" integer NOT NULL,
-    "GiaoVienDay" character(100)  NOT NULL,
+    "MaGV" character(100)  NOT NULL,
 
     CONSTRAINT "LopHoc_pkey" PRIMARY KEY ("MaLopHoc"),
     CONSTRAINT "LopHoc_HocPhan" FOREIGN KEY ("MaHP")
-        REFERENCES public."HocPhan" ("MaHP") MATCH SIMPLE
+        REFERENCES public."HocPhan" ("MaHP") MATCH SIMPLE,
+    CONSTRAINT "LopHoc_GiangVien" FOREIGN KEY ("MaGV") 
+        REFERENCES public."GiangVien" ("MaGV") MATCH SIMPLE 
 );
 
-
-
-CREATE TABLE IF NOT EXISTS public."DangKi"
+CREATE TABLE public."LopThi "
 (
-    "MaSV" character varying(10) NOT NULL,
+    "MaLopHoc" character(10)  NOT NULL,
+    "MaLopThi" character(10)  NOT NULL,
+    "ThoiGian" date NOT NULL,
+    "DiaDiem" character(100) NOT NULL, 
+
+    CONSTRAINT "LopThi_pkey" PRIMARY KEY ("MaLopThi"),
+    CONSTRAINT "LopThi_LopHoc" FOREIGN KEY ("MaLopHoc")  
+        REFERENCES public."LopHoc" ("MaLopHoc") MATCH SIMPLE
+);
+
+CREATE TABLE public."DangKi"
+(
+    "MaSV" character(10) NOT NULL,
     "MaHP" character(100)  NOT NULL,
-    "MaLopHoc" character(100)  NOT NULL,
+    "MaLopHoc" character(10)  NOT NULL,
+    "MaLopThi" character(10)  NOT NULL,
 
     CONSTRAINT "DangKi_HocPhan" FOREIGN KEY ("MaHP")
         REFERENCES public."HocPhan" ("MaHP") MATCH SIMPLE,
@@ -96,15 +104,9 @@ CREATE TABLE IF NOT EXISTS public."DangKi"
         REFERENCES public."SinhVien" ("MaSV") MATCH SIMPLE
 );
 
-
-
-
-
-
-
-CREATE TABLE IF NOT EXISTS public."DiemRenLuyen"
+CREATE TABLE public."DiemRenLuyen"
 (
-    "MaSV" character varying(10) NOT NULL,
+    "MaSV" character(10) NOT NULL,
     "XepLoai" character(50)  NOT NULL,
     "DiemHocTap" integer NOT NULL,
     "DiemNoiQuy" integer NOT NULL,
@@ -117,25 +119,22 @@ CREATE TABLE IF NOT EXISTS public."DiemRenLuyen"
         REFERENCES public."SinhVien" ("MaSV") MATCH SIMPLE
 );
 
-
-
-CREATE TABLE IF NOT EXISTS public."CacChungChi"
-(	"MaSV" character varying(10) NOT NULL,
+CREATE TABLE public."CacChungChi"
+(	"MaSV" character(10) NOT NULL,
     "Ten" character varying(10) NOT NULL, 
     "ThoiGian" date NOT NULL,
     "ThoiHan" date NOT NULL,
     "Diem" integer NOT NULL,
  
-    CONSTRAINT "ChungChi_pkey" PRIMARY KEY ("MaSV")
+    CONSTRAINT "ChungChi_pkey" PRIMARY KEY ("MaSV"),
  	
  	CONSTRAINT "DangKi_SinhVien" FOREIGN KEY ("MaSV")
         REFERENCES public."SinhVien" ("MaSV") MATCH SIMPLE
 );
 
-
-CREATE TABLE IF NOT EXISTS public."Diem"
+CREATE TABLE public."Diem"
 (
-    "MaSV" character varying(10) NOT NULL,
+    "MaSV" character(10) NOT NULL,
     "MaHP" character(100) NOT NULL,
     "Ky" character(10)  NOT NULL,
     "DiemGK" integer NOT NULL,
@@ -144,7 +143,6 @@ CREATE TABLE IF NOT EXISTS public."Diem"
     "DiemCK" integer NOT NULL,
     "DiemKTHP" integer NOT NULL,
 
-    
     CONSTRAINT "Diem_pkey" PRIMARY KEY ("MaSV"),
 
     CONSTRAINT "Diem_HocPhan" FOREIGN KEY ("MaHP")
@@ -153,15 +151,13 @@ CREATE TABLE IF NOT EXISTS public."Diem"
     CONSTRAINT "Diem_SinhVien" FOREIGN KEY ("MaSV")
         REFERENCES public."SinhVien" ("MaSV") MATCH SIMPLE
 );
-
-
-
-CREATE TABLE IF NOT EXISTS public."LyLichSV"
+ 
+CREATE TABLE public."LyLichSV"
 (
-    "MaSV" character varying(10) NOT NULL,
+    "MaSV" character(10) NOT NULL,
     "NgaySinh" date NOT NULL,
-    "DiaChi" character(100) NOT NULL,
-    "GioiTinh" character(100)  NOT NULL,
+    "DiaDiem" character(100) NOT NULL,
+    "GioiTinh" character(10)  NOT NULL,
     "CCCD" integer NOT NULL,
     "Email" character(100) NOT NULL,
     "SDT" integer NOT NULL,
@@ -171,3 +167,4 @@ CREATE TABLE IF NOT EXISTS public."LyLichSV"
         REFERENCES public."SinhVien" ("MaSV") MATCH SIMPLE
 );
 
+-------------------------------------------------------------------------------------
