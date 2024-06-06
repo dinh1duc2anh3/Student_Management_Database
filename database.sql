@@ -1,5 +1,6 @@
 -------------------------------------------------------------------------------------
 --Create tables
+
 CREATE TABLE public."HeDaoTao"
 (
     "TenHDT" character(100)  NOT NULL,
@@ -16,7 +17,7 @@ CREATE TABLE public."Lop"
     "Nganh" character(100)  NOT NULL,
     "Khoa" character(100) NOT NULL,
     "SiSo" integer NOT NULL,	
-    "LopTruong" character varying(100) NOT NULL,    
+    "MaLopTruong" integer NOT NULL,    
 	
     CONSTRAINT "Lop_pkey" PRIMARY KEY ("MaLop"), 
     CONSTRAINT "Lop_HeDT" FOREIGN KEY ("MaHDT")
@@ -25,7 +26,7 @@ CREATE TABLE public."Lop"
 
 CREATE TABLE public."SinhVien"
 (
-    "MaSV" character(10) NOT NULL,
+    "MaSV" integer NOT NULL,
     "TenSV" character varying(100)  NOT NULL,
     "MaLop" character(100)  NOT NULL,
     "NienKhoa" integer NOT NULL,
@@ -34,6 +35,7 @@ CREATE TABLE public."SinhVien"
     CONSTRAINT "SinhVien_Lop" FOREIGN KEY ("MaLop")
         REFERENCES public."Lop" ("MaLop") MATCH SIMPLE
 );
+
 
 CREATE TABLE public."HocPhan"
 (
@@ -75,7 +77,7 @@ CREATE TABLE public."LopHoc"
         REFERENCES public."GiangVien" ("MaGV") MATCH SIMPLE 
 );
 
-CREATE TABLE public."LopThi "
+CREATE TABLE public."LopThi"
 (
     "MaLopHoc" character(10)  NOT NULL,
     "MaLopThi" character(10)  NOT NULL,
@@ -89,7 +91,7 @@ CREATE TABLE public."LopThi "
 
 CREATE TABLE public."DangKi"
 (
-    "MaSV" character(10) NOT NULL,
+    "MaSV" integer NOT NULL,
     "MaHP" character(100)  NOT NULL,
     "MaLopHoc" character(10)  NOT NULL,
     "MaLopThi" character(10)  NOT NULL,
@@ -106,7 +108,7 @@ CREATE TABLE public."DangKi"
 
 CREATE TABLE public."DiemRenLuyen"
 (
-    "MaSV" character(10) NOT NULL,
+    "MaSV" integer NOT NULL,
     "XepLoai" character(50)  NOT NULL,
     "DiemHocTap" integer NOT NULL,
     "DiemNoiQuy" integer NOT NULL,
@@ -120,7 +122,7 @@ CREATE TABLE public."DiemRenLuyen"
 );
 
 CREATE TABLE public."CacChungChi"
-(	"MaSV" character(10) NOT NULL,
+(	"MaSV" integer NOT NULL,
     "Ten" character varying(10) NOT NULL, 
     "ThoiGian" date NOT NULL,
     "ThoiHan" date NOT NULL,
@@ -134,7 +136,7 @@ CREATE TABLE public."CacChungChi"
 
 CREATE TABLE public."Diem"
 (
-    "MaSV" character(10) NOT NULL,
+    "MaSV" integer NOT NULL,
     "MaHP" character(100) NOT NULL,
     "Ky" character(10)  NOT NULL,
     "DiemGK" integer NOT NULL,
@@ -154,7 +156,7 @@ CREATE TABLE public."Diem"
  
 CREATE TABLE public."LyLichSV"
 (
-    "MaSV" character(10) NOT NULL,
+    "MaSV" integer NOT NULL,
     "NgaySinh" date NOT NULL,
     "DiaDiem" character(100) NOT NULL,
     "GioiTinh" character(10)  NOT NULL,
@@ -166,5 +168,75 @@ CREATE TABLE public."LyLichSV"
     CONSTRAINT "LyLichSV_SinhVien" FOREIGN KEY ("MaSV")
         REFERENCES public."SinhVien" ("MaSV") MATCH SIMPLE
 );
+
+-------------------------------------------------------------------------------------
+-- PHAN NAY DANG TEST ĐỂ TẠO DATA
+
+-- CREATE TABLE public."HeDaoTao"
+-- (
+--     "TenHDT" character(100)  NOT NULL,
+--     "MaHDT" character(100) NOT NULL,
+	
+--     CONSTRAINT "HeDaoTao_pkey" PRIMARY KEY ("MaHDT")
+-- );
+
+-- CREATE TABLE public."Lop"
+-- (
+--     "TenLop" character varying(100)  NOT NULL,	
+--     "MaLop" character(100)   NOT NULL,
+-- 	"MaHDT" character(100)   NOT NULL,
+--     "Nganh" character(100)  NOT NULL,
+--     "Khoa" character(100) NOT NULL,
+--     "SiSo" integer NOT NULL,	
+--     "MaLopTruong" integer NOT NULL,    
+	
+--     CONSTRAINT "Lop_pkey" PRIMARY KEY ("MaLop"), 
+--     CONSTRAINT "Lop_HeDT" FOREIGN KEY ("MaHDT")
+--         REFERENCES public."HeDaoTao" ("MaHDT") MATCH SIMPLE
+-- );
+
+-- CREATE TABLE public."SinhVien"
+-- (
+--     "MaSV" integer NOT NULL,
+--     "TenSV" character varying(100)  NOT NULL,
+--     "MaLop" character(100)  NOT NULL,
+--     "NienKhoa" integer NOT NULL,
+
+--     CONSTRAINT "SinhVien_pkey" PRIMARY KEY ("MaSV"),
+--     CONSTRAINT "SinhVien_Lop" FOREIGN KEY ("MaLop")
+--         REFERENCES public."Lop" ("MaLop") MATCH SIMPLE
+-- );
+
+
+
+-- INSERT INTO public."HeDaoTao" ("TenHDT", "MaHDT")
+-- VALUES ('Kỹ sư Công nghệ thông tin - Tiếng Nhật - Tích hợp', 'KSCLC-TN-TT-VN-ICT');
+
+
+
+-- INSERT INTO public."Lop" ("TenLop", "MaLop", "MaHDT", "Nganh", "Khoa", "SiSo", "MaLopTruong")
+-- VALUES ('Việt Nhật 07-K67', 'VN-07', 'KSCLC-TN-TT-VN-ICT', 'Công nghệ thông tin Việt-Nhật 2022', 'Trường Công nghệ thông tin và Truyền thông', 50, 20225917 );
+
+
+-- -- Tạo dữ liệu ngẫu nhiên cho bảng SinhVien
+-- WITH random_data AS (
+--     SELECT 
+--         20220000 + row_number() OVER () AS "MaSV",
+--         (array['Nguyễn','Trần','Lê','Phạm','Hoàng','Huỳnh','Võ','Đặng','Bùi','Đỗ'])[floor(random()*10) + 1] ||
+--         ' ' ||
+--         (array['Văn','Bình','Thị','Duy','Thu','Hồng','Tâm','Minh','Lan','Thành','Hải'])[floor(random()*10) + 1] ||
+--         ' ' ||
+--         (array['An','Ánh','Anh','Bích','Hoa','Hùng','Hải','Tú','Nhung','Dũng','Trang','Long','Tâm'])[floor(random()*10) + 1] AS "TenSV"
+--     FROM generate_series(1, 100)
+-- )
+-- INSERT INTO public."SinhVien" ("MaSV", "TenSV", "MaLop", "NienKhoa")
+-- SELECT 
+--     rd."MaSV",
+--     rd."TenSV",
+--     'VN-07' AS "MaLop",
+--     67 AS "NienKhoa"
+-- FROM random_data rd
+-- LEFT JOIN public."SinhVien" sv ON rd."MaSV" = sv."MaSV"
+-- WHERE sv."MaSV" IS NULL;
 
 -------------------------------------------------------------------------------------
