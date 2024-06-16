@@ -39,11 +39,11 @@ CREATE TABLE public."SinhVien"
 
 CREATE TABLE public."HocPhan"
 (
-    "MaHP" character(100)  NOT NULL,
     "TenHP" character(100)  NOT NULL,
+    "MaHP" character(100)  NOT NULL,
     "SoTinHocPhan" integer NOT NULL,
-    "SoTinHocPhi" integer NOT NULL,
-	"TrongSo" integer not NULL,
+    "SoTinHocPhi" float NOT NULL,
+	"TrongSo" float not NULL,
 
     CONSTRAINT "HocPhan_pkey" PRIMARY KEY ("MaHP")
 );
@@ -66,7 +66,6 @@ CREATE TABLE public."LopHoc"
     "Ky" character(10)  NOT NULL,
     "DiaDiem" character(100) NOT NULL,
     "MaHP" character(10)  NOT NULL,
-    "TenLop" character varying(100) NOT NULL,
     "ThoiGian" date NOT NULL,
     "SiSo" integer NOT NULL,
     "MaGV" character(100)  NOT NULL,
