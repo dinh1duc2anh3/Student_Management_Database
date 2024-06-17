@@ -1,0 +1,81 @@
+TenHP,MaHP,SoTinHocPhan,SoTinHocPhi,TrongSo,Ky
+Triết học Mác-Lênin,SSH1111,3,3,0.5,1
+Kinh tế chính trị Mác-Lênin,SSH1121,2,2,0.5,2
+Chủ nghĩa xã hội khoa học,SSH1131,2,2,0.5,3
+Lịch sử Đảng Cộng sản Việt Nam,SSH1141,2,2,0.5,4
+Tư tưởng Hồ Chí Minh,SSH1151,2,2,0.5,5
+Pháp luật đại cương,EM1170,2,2,0.5,2
+Lý luận TDTT,PE1014,0,1.5,0.5,1
+Bơi lội,PE1024,0,1.5,0.5,
+Bóng đá 1,PE2201,0,1.5,0.5,3
+Bóng đá 2,PE2202,0,1.5,0.5,4
+Bóng đá 3,PE2203,0,1.5,0.5,5
+Bóng chuyền 1,PE2101,0,1.5,0.5,
+Bóng chuyền 2,PE2102,0,1.5,0.5,
+Bóng chuyền 3,PE2103,0,1.5,0.5,
+Bóng rổ 1,PE2301,0,1.5,0.5,4
+Bóng rổ 2,PE2302,0,1.5,0.5,
+Bóng rổ 3,PE2303,0,1.5,0.5,5
+Bóng bàn 1,PE2401,0,1.5,0.5,3
+Bóng bàn 2,PE2402,0,1.5,0.5,
+Bóng bàn 3,PE2403,0,1.5,0.5,
+Đường lối quân sự của Đảng,MIL1110,0,3,0.3,1
+Công tác quốc phòng-an ninh,MIL1120,0,3,0.3,2
+QS chung và KCT bắn súng AK,MIL1130,0,5,0.3,3
+IELTS Listening 1,FL1120,2,3,0.5,2
+IELTS Speaking 1,FL1121,1,2,0.5,2
+IELTS Reading 1,FL1122,1,2,0.5,2
+IELTS Writing 1,FL1123,2,3,0.5,3
+IELTS Listening 2,FL1124,2,3,0.5,3
+IELTS Speaking 2,FL1125,1,2,0.5,3
+IELTS Reading 2,FL1126,1,2,0.5,3
+IELTS Writing 2,FL1127,2,3,0.5,3
+Algebra,MI1144E,3,3,0.3,1
+Caculus 1,MI1114E,3,4,0.5,1
+Caculus 2,MI1124E,3,4,0.7,2
+Derivative equations and series,MI1134E,3,4,0.7,2
+Probability and Statistic 1,MI2020E,2,2,0.5,3
+Physics 1,PH1110E,3,4.5,0.7,3
+Electronics for Information Technology,IT3420E,2,3,0.5,4
+Electronics for Information Technology lab,IT2140E,2,4,0.5,4
+Introduction to ICT,IT2110,2,2,0.7,1
+Computer Literacy,IT2120,2,4,0.6,1
+Discrete Math,IT3020E,3,4,0.5,3
+Scientific computing,IT4110E,3,4,0.7,4
+Signal processing,IT4172E,2,3,0.7,6
+C Programming Language,IT3210,2,2,0.7,3
+C Programming Language Lab,IT3220,2,4,0.7,3
+Introduction to Communication Engineering,IT4593E,2,3,0.7,5
+Data Structures and Algorithms,IT3312E,2,3,0.6,4
+Data Structures and Algorithms Basic Lab,IT3230E,2,4,0.6,4
+Applied Algorithms,IT3170E,2,3.5,0.6,5
+Software Engineering,IT4082E,2,3,0.6,6
+Operating Systems,IT3070E,3,4,0.6,5
+Computer Networks,IT3080E,3,4.5,0.5,6
+Database,IT3292E,2,2,0.5,5
+Database Lab,IT3290E,2,4,0.6,5
+Introduction to Artificial Intelligence,IT3160E,3,4,0.6,4
+Object Oriented Language and Theory (Java),IT3100E,3,4.5,0.5,4
+Computer Architecture,IT3283E,2,3,0.7,5
+Assembly Language and Computer Architecture Lab,IT3280E,2,4,0.7,5
+Introduction to Information Security,IT4015E,3,4,0.6,7
+Graduation Research 1,IT5023E,2,6,1,5
+Graduation Research 2,IT5024E,2,6,1,7
+ITSS Software Development,IT4549E,3,4,0.5,6
+Network Programming,IT4062E,2,4,0.5,7
+Compiler Construction,IT3323E,3,4,0.5,6
+Technical Writing and Presentation,IT2030,3,4,0.5,3
+Kỹ năng mềm,ED3220,2,3,0.7,4
+Tâm lý học ứng dụng,ED3280,2,3,0.5,6
+Thiết kế mỹ thuật công nghiệp,TEX3123,2,3,0.5,5
+Web technologies and e-Services,IT4409E,3,4,0.6,6
+Mobile Programming,IT4785E,2,3,0.6,7
+Management of Software Development,IT4542E,2,2,0.6,7
+Introduction to Data Science,IT4142E,2,3,0.6,7
+Machine Learning and Data Mining,IT3191E,3,4.5,0.6,6
+User Interface and User Experience,IT4441E,3,4,0.6,7
+Embedded Systems,IT4210E,3,4.5,0.6,6
+IoT and Applications,IT4735E,2,3,0.5,7
+IP Network Design and Implementation,IT4651E,3,5,0.5,7
+ITSS Internship,IT4948E,2,4,0.7,6
+Bachelor Thesis,IT4125E,6,15,0.5,8
