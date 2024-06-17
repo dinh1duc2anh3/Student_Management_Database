@@ -27,7 +27,7 @@ CREATE TABLE public."Lop"
 CREATE TABLE public."SinhVien"
 (
     "MaSV" integer NOT NULL,
-    "HoTenSV" character varying(100)  NOT NULL,
+    "HoTenSV" character varying(100) ,
     "MaLop" character(10)  NOT NULL,
     "NienKhoa" integer NOT NULL,
 
@@ -44,7 +44,6 @@ CREATE TABLE public."HocPhan"
     "SoTinHocPhan" integer NOT NULL,
     "SoTinHocPhi" float NOT NULL,
 	"TrongSo" float not NULL,
-    "Ky" integer,
 
     CONSTRAINT "HocPhan_pkey" PRIMARY KEY ("MaHP")
 );
@@ -95,7 +94,8 @@ CREATE TABLE public."DangKi"
     "MaSV" integer NOT NULL,
     "MaHP" character(100)  NOT NULL,
     "MaLopHoc" character(6)  NOT NULL,
-    "MaLopThi" character(6)  NOT NULL,
+
+    CONSTRAINT "DangKi_pkey" PRIMARY KEY ("MaSV","MaHP","MaLopHoc"),
 
     CONSTRAINT "DangKi_HocPhan" FOREIGN KEY ("MaHP")
         REFERENCES public."HocPhan" ("MaHP") MATCH SIMPLE,
@@ -118,7 +118,7 @@ CREATE TABLE public."DiemRenLuyen"
     "DiemYThucHoatDong" integer NOT NULL,
     "TongDiem" integer,    
 
-    CONSTRAINT "DiemRenLuyen_pkey" PRIMARY KEY ("MaSV"),
+    CONSTRAINT "DiemRenLuyen_pkey" PRIMARY KEY ("MaSV","Ky"),
 
     CONSTRAINT "DiemRL_SinhVien" FOREIGN KEY ("MaSV")
         REFERENCES public."SinhVien" ("MaSV") MATCH SIMPLE
@@ -131,7 +131,7 @@ CREATE TABLE public."CacChungChi"
     "ThoiHan" date NOT NULL,
     "Diem" integer NOT NULL,
  
-    CONSTRAINT "ChungChi_pkey" PRIMARY KEY ("MaSV"),
+    CONSTRAINT "ChungChi_pkey" PRIMARY KEY ("MaSV","Ten"),
  	
  	CONSTRAINT "DangKi_SinhVien" FOREIGN KEY ("MaSV")
         REFERENCES public."SinhVien" ("MaSV") MATCH SIMPLE
@@ -143,12 +143,11 @@ CREATE TABLE public."Diem"
     "MaHP" character(100) NOT NULL,
     "Ky" character(10)  NOT NULL,
     "DiemGK" integer NOT NULL,
-
     "DiemQT" integer NOT NULL,
     "DiemCK" integer NOT NULL,
     "DiemKTHP" integer NOT NULL,
 
-    CONSTRAINT "Diem_pkey" PRIMARY KEY ("MaSV"),
+    CONSTRAINT "Diem_pkey" PRIMARY KEY ("MaSV","MaHP","Ky"),
 
     CONSTRAINT "Diem_HocPhan" FOREIGN KEY ("MaHP")
         REFERENCES public."HocPhan" ("MaHP") MATCH SIMPLE,
@@ -166,9 +165,9 @@ CREATE TABLE public."LyLichSV"
     "NgaySinh" date NOT NULL,
     "DiaDiem" character(100) NOT NULL,
     "GioiTinh" character(10)  NOT NULL,
-    "CCCD" integer NOT NULL,
-    "Email" character(100) NOT NULL,
-    "SDT" integer NOT NULL,
+    "CCCD" bigint NOT NULL,
+    "Email" character(100) ,
+    "SDT" bigint NOT NULL,
     
     CONSTRAINT "LyLichSV_pkey" PRIMARY KEY ("MaSV"),
     CONSTRAINT "LyLichSV_SinhVien" FOREIGN KEY ("MaSV")
@@ -275,7 +274,7 @@ VALUES
 
 
 -- Tạo dữ liệu ngẫu nhiên cho bảng SinhVien
--- SV lớp VN02-66
+-- SV lớp VN02-66 , tương tự với các lớp khác K67
 DO $$
 BEGIN
     FOR i IN 1..50 LOOP
@@ -284,68 +283,76 @@ BEGIN
     END LOOP;
 END $$;
 
-
-
-
-
-
-
-
-WITH random_data AS (
-    SELECT 
-        20220000 + row_number() OVER () AS "MaSV",
-)
-INSERT INTO public."SinhVien" ("MaSV","NienKhoa")
-SELECT 
-    rd."MaSV",
-    67 AS "NienKhoa"
-FROM random_data rd
-LEFT JOIN public."SinhVien" sv ON rd."MaSV" = sv."MaSV"
-WHERE sv."MaSV" IS NULL;
 -- SV lớp VN07-67
 -- SV lớp VP01-67
 -- SV lớp ICT01-67
 -- SV lớp IT103-67 
 -- SV lớp IT201-67
 -- SV lớp DSAI01-67
-WITH random_data AS (
-    SELECT 
-        20220000 + row_number() OVER () AS "MaSV",
-        (array['Nguyễn','Trần','Lê','Phạm','Hoàng','Huỳnh','Võ','Đặng','Bùi','Đỗ'])[floor(random()*10) + 1] ||
-        ' ' ||
-        (array['Văn','Bình','Thị','Duy','Thu','Hồng','Tâm','Minh','Lan','Thành','Hải'])[floor(random()*10) + 1] ||
-        ' ' ||
-        (array['An', 'Anh', 'Ban', 'Bình', 'Bích', 'Băng', 'Bạch', 'Bảo', 'Bằng', 'Bội', 'Ca', 'Cam', 'Chi',
-				  'Chinh', 'Chiêu', 'Chung', 'Châu', 'Cát', 'Cúc', 'Cương', 'Cầm', 'Cẩm', 'Dao', 'Di', 'Diên', 'Diễm',
-				  'Diệp', 'Diệu', 'Du', 'Dung', 'Duy', 'Duyên', 'Dân', 'Dã', 'Dương', 'Dạ', 'Gia', 'Giang', 'Giao', 'Giáng',
-				  'Hiếu', 'Hiền', 'Hiểu', 'Hiệp', 'Hoa', 'Hoan', 'Hoài', 'Hoàn', 'Hoàng', 'Hoạ', 'Huyền', 'Huệ', 'Huỳnh', 'Hà',
-				  'Hàm', 'Hân', 'Hòa', 'Hương', 'Hướng', 'Hường', 'Hưởng', 'Hạ', 'Hạc', 'Hạnh', 'Hải', 'Hảo', 'Hậu', 'Hằng', 'Họa',
-				  'Hồ', 'Hồng', 'Hợp', 'Khai', 'Khanh', 'Khiết', 'Khuyên', 'Khuê', 'Khánh', 'Khê', 'Khôi', 'Khúc', 'Khả', 'Khải', 'Kim', 
-				  'Kiết', 'Kiều', 'Kê', 'Kỳ', 'Lam', 'Lan', 'Linh', 'Liên', 'Liễu', 'Loan', 'Ly', 'Lâm', 'Lê', 'Lý', 'Lăng', 'Lưu', 'Lễ', 
-				  'Lệ', 'Lộc', 'Lợi', 'Lục', 'Mai', 'Mi', 'Minh', 'Miên', 'My', 'Mẫn', 'Mậu', 'Mộc', 'Mộng', 'Mỹ', 'Nga', 'Nghi', 'Nguyên',
-				  'Nguyết', 'Nguyệt', 'Ngà', 'Ngân', 'Ngôn', 'Ngọc', 'Nhan', 'Nhi', 'Nhiên', 'Nhung', 'Nhàn', 'Nhân', 'Nhã', 'Nhơn', 'Như', 
-				  'Nhạn', 'Nhất', 'Nhật', 'Nương', 'Nữ', 'Oanh', 'Phi', 'Phong', 'Phúc', 'Phương', 'Phước', 'Phượng', 'Phụng', 'Quyên', 'Quân',
-				  'Quế', 'Quỳnh', 'Sa', 'San', 'Sao', 'Sinh', 'Song', 'Sông', 'Sơn', 'Sương', 'Thanh', 'Thi', 'Thiên', 'Thiếu', 'Thiều', 'Thiện',
-				  'Thoa', 'Thoại', 'Thu', 'Thuần', 'Thuận', 'Thy', 'Thái', 'Thêu', 'Thông', 'Thùy', 'Thúy', 'Thơ', 'Thư', 'Thương', 'Thường', 
-				  'Thạch', 'Thảo', 'Thắm', 'Thục', 'Thụy', 'Thủy', 'Tinh', 'Tiên', 'Tiểu', 'Trang', 'Tranh', 'Trinh', 'Triều', 'Triệu', 'Trung',
-				  'Trà', 'Trâm', 'Trân', 'Trúc', 'Trầm', 'Tuyến', 'Tuyết', 'Tuyền', 'Tuệ', 'Ty', 'Tâm', 'Tùng', 'Tùy', 'Tú', 'Túy', 'Tường', 'Tịnh', 
-				  'Tố', 'Từ', 'Uyên', 'Uyển', 'Vi', 'Vinh', 'Việt', 'Vy', 'Vàng', 'Vành', 'Vân', 'Vũ', 'Vọng', 'Vỹ', 'Xuyến', 'Xuân', 'Yên', 'Yến', 
-				  'xanh', 'Ái', 'Ánh', 'Ân', 'Ðan', 'Ðinh', 'Ðiệp', 'Ðoan', 'Ðài', 'Ðàn', 'Ðào', 'Ðình', 'Ðông', 'Ðường', 'Ðồng', 'Ý', 'Đan', 'Đinh', 
-				  'Đoan', 'Đài', 'Đào', 'Đông', 'Đăng', 'Đơn', 'Đức', 'Ấu'])[floor(random()*10) + 1] AS "HoTenSV"
-    FROM generate_series(1, 100)
-)
-INSERT INTO public."SinhVien" ("MaSV", "HoTenSV", "MaLop", "NienKhoa")
-SELECT 
-    rd."MaSV",
-    rd."HoTenSV",
-    'VN-07' AS "MaLop",
-    67 AS "NienKhoa"
-FROM random_data rd
-LEFT JOIN public."SinhVien" sv ON rd."MaSV" = sv."MaSV"
-WHERE sv."MaSV" IS NULL;
 
 
-select * from public."SinhVien"
+--BANG LyLichSV
+
+DO $$ 
+DECLARE 
+    sv_id integer := 20210000;
+    ho varchar(20);
+	tendem varchar(20);
+	ten varchar(20);
+    ngaysinh date;
+    cccd bigint := 40204010000;
+    sdt bigint := 12345000;
+BEGIN 
+    FOR i IN 1..50 LOOP
+        ho := 
+            (array['Nguyễn','Trần','Lê','Phạm','Hoàng','Huỳnh','Võ','Đặng','Bùi','Đỗ','Lý','Phan','Vũ','Hồ','Ngô','Dương','Lý','Đinh'])[floor(random()*18) + 1] ;
+        tendem :=   
+            (array['Văn','Bình','Thị','Duy','Thu','Hồng','Tâm','Minh','Lan','Thành','Hải','Đức','Quỳnh'])[floor(random()*13) + 1] ;
+        ten :=
+            (array['An', 'Anh', 'Ban', 'Bình', 'Bích', 'Băng', 'Bạch', 'Bảo', 'Bằng', 'Bội', 'Ca', 'Cam', 'Chi',
+            'Chinh', 'Chiêu', 'Chung', 'Châu', 'Cát', 'Cúc', 'Cương', 'Cầm', 'Cẩm', 'Dao', 'Di', 'Diên', 'Diễm',
+            'Diệp', 'Diệu', 'Du', 'Dung', 'Duy', 'Duyên', 'Dân', 'Dã', 'Dương', 'Dạ', 'Gia', 'Giang', 'Giao', 'Giáng',
+            'Hiếu', 'Hiền', 'Hiểu', 'Hiệp', 'Hoa', 'Hoan', 'Hoài', 'Hoàn', 'Hoàng', 'Hoạ', 'Huyền', 'Huệ', 'Huỳnh', 'Hà',
+            'Hàm', 'Hân', 'Hòa', 'Hương', 'Hướng', 'Hường', 'Hưởng', 'Hạ', 'Hạc', 'Hạnh', 'Hải', 'Hảo', 'Hậu', 'Hằng', 'Họa',
+            'Hồ', 'Hồng', 'Hợp', 'Khai', 'Khanh', 'Khiết', 'Khuyên', 'Khuê', 'Khánh', 'Khê', 'Khôi', 'Khúc', 'Khả', 'Khải', 'Kim', 
+            'Kiết', 'Kiều', 'Kê', 'Kỳ', 'Lam', 'Lan', 'Linh', 'Liên', 'Liễu', 'Loan', 'Ly', 'Lâm', 'Lê', 'Lý', 'Lăng', 'Lưu', 'Lễ', 
+            'Lệ', 'Lộc', 'Lợi', 'Lục', 'Mai', 'Mi', 'Minh', 'Miên', 'My', 'Mẫn', 'Mậu', 'Mộc', 'Mộng', 'Mỹ', 'Nga', 'Nghi', 'Nguyên',
+            'Nguyết', 'Nguyệt', 'Ngà', 'Ngân', 'Ngôn', 'Ngọc', 'Nhan', 'Nhi', 'Nhiên', 'Nhung', 'Nhàn', 'Nhân', 'Nhã', 'Nhơn', 'Như', 
+            'Nhạn', 'Nhất', 'Nhật', 'Nương', 'Nữ', 'Oanh', 'Phi', 'Phong', 'Phúc', 'Phương', 'Phước', 'Phượng', 'Phụng', 'Quyên', 'Quân',
+            'Quế', 'Quỳnh', 'Sa', 'San', 'Sao', 'Sinh', 'Song', 'Sông', 'Sơn', 'Sương', 'Thanh', 'Thi', 'Thiên', 'Thiếu', 'Thiều', 'Thiện',
+            'Thoa', 'Thoại', 'Thu', 'Thuần', 'Thuận', 'Thy', 'Thái', 'Thêu', 'Thông', 'Thùy', 'Thúy', 'Thơ', 'Thư', 'Thương', 'Thường', 
+            'Thạch', 'Thảo', 'Thắm', 'Thục', 'Thụy', 'Thủy', 'Tinh', 'Tiên', 'Tiểu', 'Trang', 'Tranh', 'Trinh', 'Triều', 'Triệu', 'Trung',
+            'Trà', 'Trâm', 'Trân', 'Trúc', 'Trầm', 'Tuyến', 'Tuyết', 'Tuyền', 'Tuệ', 'Ty', 'Tâm', 'Tùng', 'Tùy', 'Tú', 'Túy', 'Tường', 'Tịnh', 
+            'Tố', 'Từ', 'Uyên', 'Uyển', 'Vi', 'Vinh', 'Việt', 'Vy', 'Vàng', 'Vành', 'Vân', 'Vũ', 'Vọng', 'Vỹ', 'Xuyến', 'Xuân', 'Yên', 'Yến', 
+            'xanh', 'Ái', 'Ánh', 'Ân', 'Ðan', 'Ðinh', 'Ðiệp', 'Ðoan', 'Ðài', 'Ðàn', 'Ðào', 'Ðình', 'Ðông', 'Ðường', 'Ðồng', 'Ý', 'Đan', 'Đinh', 
+            'Đoan', 'Đài', 'Đào', 'Đông', 'Đăng', 'Đơn', 'Đức', 'Ấu'])[floor(random()*200) + 1];
+		
+		ngaysinh := make_date(2003, floor(random() * 12 + 1)::int, floor(random() * 28 + 1)::int);
+        sv_id := sv_id + 1;
+        cccd := cccd + 1;
+        sdt := sdt + 1;
+		
+        INSERT INTO public."LyLichSV" ("MaSV", "HoSV", "TenDemSV", "TenSV", "NgaySinh", "DiaDiem", "GioiTinh", "CCCD", "Email", "SDT")
+        VALUES (
+            sv_id,
+            ho,
+            tendem,
+            ten,
+            ngaysinh,
+            (array['Hà Nội','Hà Giang','Cao Bằng','Bắc Kạn','Tuyên Quang','Lào Cai','Điện Biên','Lai Châu',
+            'Sơn La','Yên Bái','Hoà Bình','Thái Nguyên','Lạng Sơn','Quảng Ninh', 'Bắc Giang', 'Phú Thọ', 'Vĩnh Phúc', 'Bắc Ninh', 'Hải Dương',
+            'Hải Phòng', 'Hưng Yên', 'Thái Bình', 'Hà Nam', 'Nam Định', 'Ninh Bình', 'Thanh Hóa', 'Nghệ An', 'Hà Tĩnh', 'Quảng Bình', 'Quảng Trị', 
+            'Thừa Thiên Huế', 'Đà Nẵng', 'Quảng Nam', 'Quảng Ngãi', 'Bình Định', 'Phú Yên', 'Khánh Hòa', 'Ninh Thuận', 'Bình Thuận'])[floor(random()*39) + 1],
+            (array['Nam','Nữ'])[floor(random()*2) + 1],
+            cccd,
+            NULL,
+            sdt
+        );
+        
+    END LOOP;
+END $$;
+
+--
 
 update public."SinhVien"
 set "MaLop" = 'VN-08'
@@ -381,3 +388,39 @@ CREATE TRIGGER trg_calculate_diem_ren_luyen
 BEFORE INSERT OR UPDATE ON public."DiemRenLuyen"
 FOR EACH ROW
 EXECUTE FUNCTION calculate_diem_ren_luyen();
+
+--tự động tạo email từ các cột họ, tên đệm và tên của sinh viên trong bảng LyLichSV,
+-- loại bỏ các dấu và lưu kết quả vào một cột Email mới khi có bất kỳ thay đổi nào trong các cột họ, tên đệm hoặc tên.
+
+CREATE OR REPLACE FUNCTION generate_email()
+RETURNS TRIGGER AS $$
+BEGIN
+    DECLARE
+        email_text TEXT;
+
+    email_text := REPLACE(REPLACE(REPLACE(NEW."Ten", 'á', 'a'), 'ấ', 'a'), 'ạ', 'a') || '.' ||
+                  REPLACE(REPLACE(REPLACE(NEW."Ho", 'ú', 'u'), 'ứ', 'u'), 'ụ', 'u') || (NEW."MaSV" - 20000000) || '@sis.hust.edu.vn';
+
+    -- Cập nhật cột Email trong bảng LyLichSV
+
+    NEW."Email" := email_text;
+
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_generate_email
+BEFORE INSERT OR UPDATE ON public."LyLichSV"
+FOR EACH ROW
+EXECUTE FUNCTION generate_email();
+
+
+
+
+ON LyLichSV
+AFTER INSERT, UPDATE
+AS
+BEGIN
+    
+
+END;
