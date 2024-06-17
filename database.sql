@@ -44,6 +44,7 @@ CREATE TABLE public."HocPhan"
     "SoTinHocPhan" integer NOT NULL,
     "SoTinHocPhi" float NOT NULL,
 	"TrongSo" float not NULL,
+    "Ky" integer,
 
     CONSTRAINT "HocPhan_pkey" PRIMARY KEY ("MaHP")
 );
@@ -110,11 +111,12 @@ CREATE TABLE public."DiemRenLuyen"
 (
     "MaSV" integer NOT NULL,
     "Ky" character(10)  NOT NULL,
-    "XepLoai" character(50)  NOT NULL,
+    "XepLoai" character(50) ,
     "DiemHocTap" integer NOT NULL,
     "DiemNoiQuy" integer NOT NULL,
     "DiemYThucCongDan" integer NOT NULL,
     "DiemYThucHoatDong" integer NOT NULL,
+    "TongDiem" integer,    
 
     CONSTRAINT "DiemRenLuyen_pkey" PRIMARY KEY ("MaSV"),
 
@@ -174,69 +176,138 @@ CREATE TABLE public."LyLichSV"
 );
 
 -------------------------------------------------------------------------------------
--- TAO DATA
-
-CREATE TABLE public."HeDaoTao"
+-- TAO ctdt của sinh viên các ngành, để các sv tiện đki theo kì
+CREATE TABLE public."CtdtVietNhat"
 (
-    "TenHDT" character(100)  NOT NULL,
-    "MaHDT" character(100) NOT NULL,
-	
-    CONSTRAINT "HeDaoTao_pkey" PRIMARY KEY ("MaHDT")
+    "TenHP" character(100)  NOT NULL,
+    "MaHP" character(100)  NOT NULL,
+    "SoTinHocPhan" integer NOT NULL,
+    "SoTinHocPhi" float NOT NULL,
+	"TrongSo" float not NULL,
+    "Ky" integer,
+
+    CONSTRAINT "CtdtVietNhat_pkey" PRIMARY KEY ("MaHP")
 );
 
-CREATE TABLE public."Lop"
+CREATE TABLE public."CtdtVietPhap"
 (
-    "TenLop" character varying(100)  NOT NULL,	
-    "MaLop" character(10)   NOT NULL,
-	"MaHDT" character(100)   NOT NULL,
-    "Nganh" character(100)  NOT NULL,
-    "Khoa" character(100) NOT NULL,
-    "SiSo" integer NOT NULL,	
-    "MaLopTruong" integer NOT NULL,    
-	
-    CONSTRAINT "Lop_pkey" PRIMARY KEY ("MaLop"), 
-    CONSTRAINT "Lop_HeDT" FOREIGN KEY ("MaHDT")
-        REFERENCES public."HeDaoTao" ("MaHDT") MATCH SIMPLE
+    "TenHP" character(100)  NOT NULL,
+    "MaHP" character(100)  NOT NULL,
+    "SoTinHocPhan" integer NOT NULL,
+    "SoTinHocPhi" float NOT NULL,
+	"TrongSo" float not NULL,
+    "Ky" integer,
+
+    CONSTRAINT "CtdtVietPhap_pkey" PRIMARY KEY ("MaHP")
 );
 
-CREATE TABLE public."SinhVien"
+CREATE TABLE public."CtdtICT"
 (
-    "MaSV" integer NOT NULL,
-    "HoSV" character varying(20)  NOT NULL,
-    "HoTenSV" character varying(100)  NOT NULL,
-    "MaLop" character(10)  NOT NULL,
-    "NienKhoa" integer NOT NULL,
+    "TenHP" character(100)  NOT NULL,
+    "MaHP" character(100)  NOT NULL,
+    "SoTinHocPhan" integer NOT NULL,
+    "SoTinHocPhi" float NOT NULL,
+	"TrongSo" float not NULL,
+    "Ky" integer,
 
-    CONSTRAINT "SinhVien_pkey" PRIMARY KEY ("MaSV"),
-    CONSTRAINT "SinhVien_Lop" FOREIGN KEY ("MaLop")
-        REFERENCES public."Lop" ("MaLop") MATCH SIMPLE
+    CONSTRAINT "CtdtICT_pkey" PRIMARY KEY ("MaHP")
 );
 
+CREATE TABLE public."CtdtIT1"
+(
+    "TenHP" character(100)  NOT NULL,
+    "MaHP" character(100)  NOT NULL,
+    "SoTinHocPhan" integer NOT NULL,
+    "SoTinHocPhi" float NOT NULL,
+	"TrongSo" float not NULL,
+    "Ky" integer,
+
+    CONSTRAINT "CtdtIT1_pkey" PRIMARY KEY ("MaHP")
+);
+
+CREATE TABLE public."CtdtIT2"
+(
+    "TenHP" character(100)  NOT NULL,
+    "MaHP" character(100)  NOT NULL,
+    "SoTinHocPhan" integer NOT NULL,
+    "SoTinHocPhi" float NOT NULL,
+	"TrongSo" float not NULL,
+    "Ky" integer,
+
+    CONSTRAINT "CtdtIT2_pkey" PRIMARY KEY ("MaHP")
+);
+
+CREATE TABLE public."CtdtDSAI"
+(
+    "TenHP" character(100)  NOT NULL,
+    "MaHP" character(100)  NOT NULL,
+    "SoTinHocPhan" integer NOT NULL,
+    "SoTinHocPhi" float NOT NULL,
+	"TrongSo" float not NULL,
+    "Ky" integer,
+
+    CONSTRAINT "CtdtDSAI_pkey" PRIMARY KEY ("MaHP")
+);
+-------------------------------------------------------------------------------------
 
 
-INSERT INTO public."HeDaoTao" ("TenHDT", "MaHDT")
-VALUES ('Kỹ sư Công nghệ thông tin - Tiếng Nhật - Tích hợp', 'KSCLC-TN-TT-VN-ICT');
+--TAO DATA 
+
+
+INSERT INTO public."HeDaoTao" ("TenHDT", "MaHDT", "TienTinChi")
+VALUES 
+    ('Chương trình đào tạo chuẩn', 'C',500),
+    ('Chương trình đào tạo đặc biệt Elitech 1', 'E1',680),
+    ('Chương trình đào tạo đặc biệt Elitech 2', 'E2',1020)
+;
 
 
 INSERT INTO public."Lop" ("TenLop", "MaLop", "MaHDT", "Nganh", "Khoa", "SiSo", "MaLopTruong")
 VALUES 
-    ('Việt Nhật 01-K67', 'VN-01', 'KSCLC-TN-TT-VN-ICT', 'Công nghệ thông tin Việt-Nhật 2022', 'Trường Công nghệ thông tin và Truyền thông', 50, 20220001),
-    ('Việt Nhật 02-K67', 'VN-02', 'KSCLC-TN-TT-VN-ICT', 'Công nghệ thông tin Việt-Nhật 2022', 'Trường Công nghệ thông tin và Truyền thông', 50, 20220002),
-    ('Việt Nhật 03-K67', 'VN-03', 'KSCLC-TN-TT-VN-ICT', 'Công nghệ thông tin Việt-Nhật 2022', 'Trường Công nghệ thông tin và Truyền thông', 50, 20220003),
-    ('Việt Nhật 04-K67', 'VN-04', 'KSCLC-TN-TT-VN-ICT', 'Công nghệ thông tin Việt-Nhật 2022', 'Trường Công nghệ thông tin và Truyền thông', 50, 20220004),
-    ('Việt Nhật 05-K67', 'VN-05', 'KSCLC-TN-TT-VN-ICT', 'Công nghệ thông tin Việt-Nhật 2022', 'Trường Công nghệ thông tin và Truyền thông', 50, 20220005),
-    ('Việt Nhật 06-K67', 'VN-06', 'KSCLC-TN-TT-VN-ICT', 'Công nghệ thông tin Việt-Nhật 2022', 'Trường Công nghệ thông tin và Truyền thông', 50, 20220006),
-    ('Việt Nhật 07-K67', 'VN-07', 'KSCLC-TN-TT-VN-ICT', 'Công nghệ thông tin Việt-Nhật 2022', 'Trường Công nghệ thông tin và Truyền thông', 50, 20225917),
-
-    ('Việt Nhật 01-K67', 'VP-01', 'KSCLC-TN-TT-VN-ICT', 'Công nghệ thông tin Việt-Pháp 2022', 'Trường Công nghệ thông tin và Truyền thông', 50, 20220007),
-    ('Global ICT 01-K67', 'ICT-01', 'KSCLC-TN-TT-VN-ICT', 'Công nghệ thông tin 2022', 'Trường Công nghệ thông tin và Truyền thông', 50, 20220008),
-    ('Khoa học Dữ liệu và Trí tuệ Nhân tạo 01-K67', 'DSAI-06', 'KSCLC-TN-TT-VN-ICT', 'Công nghệ thông tin Việt-Nhật 2022', 'Trường Công nghệ thông tin và Truyền thông', 52, 20220006)
+    ('Việt Nhật 02 K66', 'VN02-66', 'E1', 'Công nghệ thông tin Việt-Nhật', 'Trường Công nghệ thông tin và Truyền thông', 50, 20210020),
+    ('Việt Nhật 07 K67', 'VN07-67', 'E1', 'Công nghệ thông tin Việt-Nhật', 'Trường Công nghệ thông tin và Truyền thông', 50, 20220035),
+    ('Việt Pháp 01 K67', 'VP01-67', 'E1', 'Công nghệ thông tin Việt-Pháp', 'Trường Công nghệ thông tin và Truyền thông', 50, 20220075),
+    ('Công nghệ thông tin 01 K67', 'ICT01-67', 'E1', 'Công nghệ thông tin', 'Trường Công nghệ thông tin và Truyền thông', 50, 20220109),
+    ('Khoa học máy tính 03 K67', 'IT103-67', 'C', 'Khoa học máy tính', 'Trường Công nghệ thông tin và Truyền thông', 50, 20220169),
+    ('Kỹ thuật máy tính 01 K67', 'IT201-67', 'C', 'Kỹ thuật máy tính', 'Trường Công nghệ thông tin và Truyền thông', 50, 20220225),
+    ('Khoa học dữ liệu và trí tuệ nhân tạo 01 K67', 'DSAI01-67', 'E2', 'Khoa học dữ liệu và trí tuệ nhân tạo', 'Trường Công nghệ thông tin và Truyền thông', 50, 20220287)
     ;
 
 
-
-
 -- Tạo dữ liệu ngẫu nhiên cho bảng SinhVien
+-- SV lớp VN02-66
+DO $$
+BEGIN
+    FOR i IN 1..50 LOOP
+        INSERT INTO public."SinhVien" ("MaSV", "MaLop", "NienKhoa")
+        VALUES (20210000 + i, 'VN02-66', 66);
+    END LOOP;
+END $$;
+
+
+
+
+
+
+
+
+WITH random_data AS (
+    SELECT 
+        20220000 + row_number() OVER () AS "MaSV",
+)
+INSERT INTO public."SinhVien" ("MaSV","NienKhoa")
+SELECT 
+    rd."MaSV",
+    67 AS "NienKhoa"
+FROM random_data rd
+LEFT JOIN public."SinhVien" sv ON rd."MaSV" = sv."MaSV"
+WHERE sv."MaSV" IS NULL;
+-- SV lớp VN07-67
+-- SV lớp VP01-67
+-- SV lớp ICT01-67
+-- SV lớp IT103-67 
+-- SV lớp IT201-67
+-- SV lớp DSAI01-67
 WITH random_data AS (
     SELECT 
         20220000 + row_number() OVER () AS "MaSV",
@@ -282,3 +353,31 @@ where "MaSV" < 201 and "MaSV" > 100;
 
 
 -------------------------------------------------------------------------------------
+--TRIGGER + FUNCTION
+
+
+--tự nhập 4 đầu điểm rèn luyện vào thì sẽ tự tính tổng drl và từ tổng điểm rl sẽ đưa ra xếp loại với 
+--tiêu chí : trên 80 là giỏi , trên 50 dưới 80 là khá, dưới 50 là trung bình
+CREATE OR REPLACE FUNCTION calculate_diem_ren_luyen()
+RETURNS TRIGGER AS $$
+BEGIN
+    -- Calculate TongDiem
+    NEW."TongDiem" := NEW."DiemHocTap" + NEW."DiemNoiQuy" + NEW."DiemYThucCongDan" + NEW."DiemYThucHoatDong";
+    
+    -- Determine XepLoai
+    IF NEW."TongDiem" > 80 THEN
+        NEW."XepLoai" := 'Giỏi';
+    ELSIF NEW."TongDiem" > 50 THEN
+        NEW."XepLoai" := 'Khá';
+    ELSE
+        NEW."XepLoai" := 'Trung bình';
+    END IF;
+    
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_calculate_diem_ren_luyen
+BEFORE INSERT OR UPDATE ON public."DiemRenLuyen"
+FOR EACH ROW
+EXECUTE FUNCTION calculate_diem_ren_luyen();
