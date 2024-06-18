@@ -1,67 +1,67 @@
-TenHP,MaHP,SoTinHocPhan,SoTinHocPhi,TrongSo,Ky
-Triết học Mác-Lênin,SSH1111,3,3,0.5,1
-Kinh tế chính trị Mác- Lênin,SSH1121,2,2,0.5,2
-Chủ nghĩa xã hội khoa học,SSH1131,2,2,0.5,3
-Lịch sử Đảng Cộng sản Việt Nam,SSH1141,2,2,0.5,4
-Tư tưởng Hồ Chí Minh,SSH1151,2,2,0.5,5
-Pháp luật đại cương,EM1170,2,2,0.5,1
-Lý luận TDTT,PE1014,0,1.5,0.5,
-Bơi lội,PE1024,0,1.5,0.5,
-Bóng đá 1,PE2201,0,1.5,0.5,4
-Bóng đá 2,PE2202,0,1.5,0.5,5
-Bóng chuyền 1,PE2101,0,1.5,0.5,3
-Bóng chuyền 2,PE2102,0,1.5,0.5,3
-Bóng rổ 1,PE2301,0,1.5,0.5,4
-Bóng rổ 2,PE2302,0,1.5,0.5,5
-Bóng bàn 1,PE2401,0,1.5,0.5,
-Bóng bàn 2,PE2402,0,1.5,0.5,
-Đường lối quân sự của Đảng,MIL1110,0,3,0.3,2
-Công tác quốc phòng- an ninh,MIL1120,0,3,0.3,3
-QS chung và KCT bắn súng AK,MIL1130,0,5,0.3,3
-Tiếng Anh TOEIC I,FL1101,3,6,0.3,1
-Tiếng Anh TOEIC II,FL1102,3,6,0.3,2
-Giải tích I,MI1111,4,5,0.5,1
-Giải tích II,MI1121,3,4,0.5,2
-Giải tích III,MI1131,3,4,0.5,3
-Đại số,MI1141,4,5,0.5,1
-Xác suất thống kê,MI2020,3,4,0.5,3
-Vật lý đại cương I,PH1110,3,4.5,0.7,2
-Vật lý đại cương II,PH1120,3,4.5,0.7,3
-Tin học đại cương,IT1110,3,4.5,0.7,2
-Toán rời rạc,IT3020,3,4,0.5,3
-Nhập môn CNTT và TT,IT2000,3,5,0.5,1
-Điện tử cho CNTT,IT3420, 2,3,0.5,3
-Cấu trúc dữ liệu và thuật toán,IT3011,2,3,0.6,4
-Kiến trúc máy tính,IT3030,3,4,0.7,4
-Kỹ thuật lập trình,IT3040,2,3.5,0.6,5
-Nguyên lý hệ điều hành,IT3070,3,4,0.6,4
-Thuật toán ứng dụng,IT3170,2,3.5,0.6,5
-Mạng máy tính,IT3080,3,4.5,0.5,5
-Cơ sở dữ liệu,IT3090,3,4.5,0.5,5
-Lập trình hướng đối tượng,IT3100,2,3,0.7,4
-Project I,IT3150,2,4,0.5,5
-Nhập môn Kỹ thuật truyền thông,IT4593,2,3,0.7,5
-Xử lý tín hiệu, IT4172,2,3,0.7,5
-Phân tích và thiết kế hệ thống, IT3120, 2,3,0.6,6
-Lập trình mạng, IT4060, 2,3,0.7,6
-Nhập môn công nghệ phần mềm, IT3180, 3,4,0.6,5
-Nhập môn an toàn thông tin, IT4015, 3,4,0.6,6
-Project II, IT3931, 2,4,0.5,6
-Các hệ thống phân tán và ứng dụng, IT4611, 2,3,0.6,7
-Project III, IT3943, 3,6,0.5,7
-Technical Writing and Presentation, IT2030, 3,4,0.5,6
-Tâm lý học ứng dụng,ED3280,2,3,0.5,3
-Kỹ năng mềm,ED3220,2,3,0.7,4
-Thiết kế mỹ thuật công nghiệp,TEX3123,2,3,0.5,5
-Hệ nhúng, IT4210, 3,4.5,0.6,6
-Phát triển ứng dụng cho thiết bị di động, IT4785, 2,3,0.6,5
-IoT và ứng dụng, IT4735, 2,3,0.5,7
-Thiết kế và triển khai mạng IP, IT4651, 3,5,0.5,6
-Công nghệ Web và dịch vụ trực tuyến, IT4409, 3,4,0.6,7
-Lưu trữ và xử lý dữ liệu lớn, IT4931, 3,4,0.6,8
-Truyền thông đa phương tiện, IT4681, 3,4.5,0.6,7
-An ninh mạng, IT4263, 3,5,0.6,7
-Mật mã ứng dụng, IT4025, 3,4,0.6,7
-Phòng chống tấn công mạng,IT4831, 2,3.5,0.6,8
-Thực tập kỹ thuật, IT4991, 2,4,0.5,7
-Đồ án tốt nghiệp Cử nhân, IT4997, 6,15,0.5,8
+MaNganh,TenHP,MaHP,SoTinHocPhan,SoTinHocPhi,TrongSo,Ky
+IT2,Triết học Mác-Lênin,SSH1111,3,3,0.5,1
+IT2,Kinh tế chính trị Mác- Lênin,SSH1121,2,2,0.5,2
+IT2,Chủ nghĩa xã hội khoa học,SSH1131,2,2,0.5,3
+IT2,Lịch sử Đảng Cộng sản Việt Nam,SSH1141,2,2,0.5,4
+IT2,Tư tưởng Hồ Chí Minh,SSH1151,2,2,0.5,5
+IT2,Pháp luật đại cương,EM1170,2,2,0.5,1
+IT2,Lý luận TDTT,PE1014,0,1.5,0.5,
+IT2,Bơi lội,PE1024,0,1.5,0.5,
+IT2,Bóng đá 1,PE2201,0,1.5,0.5,4
+IT2,Bóng đá 2,PE2202,0,1.5,0.5,5
+IT2,Bóng chuyền 1,PE2101,0,1.5,0.5,3
+IT2,Bóng chuyền 2,PE2102,0,1.5,0.5,3
+IT2,Bóng rổ 1,PE2301,0,1.5,0.5,4
+IT2,Bóng rổ 2,PE2302,0,1.5,0.5,5
+IT2,Bóng bàn 1,PE2401,0,1.5,0.5,
+IT2,Bóng bàn 2,PE2402,0,1.5,0.5,
+IT2,Đường lối quân sự của Đảng,MIL1110,0,3,0.3,2
+IT2,Công tác quốc phòng- an ninh,MIL1120,0,3,0.3,3
+IT2,QS chung và KCT bắn súng AK,MIL1130,0,5,0.3,3
+IT2,Tiếng Anh TOEIC I,FL1101,3,6,0.3,1
+IT2,Tiếng Anh TOEIC II,FL1102,3,6,0.3,2
+IT2,Giải tích I,MI1111,4,5,0.5,1
+IT2,Giải tích II,MI1121,3,4,0.5,2
+IT2,Giải tích III,MI1131,3,4,0.5,3
+IT2,Đại số,MI1141,4,5,0.5,1
+IT2,Xác suất thống kê,MI2020,3,4,0.5,3
+IT2,Vật lý đại cương I,PH1110,3,4.5,0.7,2
+IT2,Vật lý đại cương II,PH1120,3,4.5,0.7,3
+IT2,Tin học đại cương,IT1110,3,4.5,0.7,2
+IT2,Toán rời rạc,IT3020,3,4,0.5,3
+IT2,Nhập môn CNTT và TT,IT2000,3,5,0.5,1
+IT2,Điện tử cho CNTT,IT3420,2,3,0.5,3
+IT2,Cấu trúc dữ liệu và thuật toán,IT3011,2,3,0.6,4
+IT2,Kiến trúc máy tính,IT3030,3,4,0.7,4
+IT2,Kỹ thuật lập trình,IT3040,2,3.5,0.6,5
+IT2,Nguyên lý hệ điều hành,IT3070,3,4,0.6,4
+IT2,Thuật toán ứng dụng,IT3170,2,3.5,0.6,5
+IT2,Mạng máy tính,IT3080,3,4.5,0.5,5
+IT2,Cơ sở dữ liệu,IT3090,3,4.5,0.5,5
+IT2,Lập trình hướng đối tượng,IT3100,2,3,0.7,4
+IT2,Project I,IT3150,2,4,0.5,5
+IT2,Nhập môn Kỹ thuật truyền thông,IT4593,2,3,0.7,5
+IT2,Xử lý tín hiệu, IT4172,2,3,0.7,5
+IT2,Phân tích và thiết kế hệ thống, IT3120,2,3,0.6,6
+IT2,Lập trình mạng, IT4060,2,3,0.7,6
+IT2,Nhập môn công nghệ phần mềm, IT3180,3,4,0.6,5
+IT2,Nhập môn an toàn thông tin, IT4015,3,4,0.6,6
+IT2,Project II, IT3931,2,4,0.5,6
+IT2,Các hệ thống phân tán và ứng dụng, IT4611,2,3,0.6,7
+IT2,Project III, IT3943,3,6,0.5,7
+IT2,Technical Writing and Presentation, IT2030,3,4,0.5,6
+IT2,Tâm lý học ứng dụng,ED3280,2,3,0.5,3
+IT2,Kỹ năng mềm,ED3220,2,3,0.7,4
+IT2,Thiết kế mỹ thuật công nghiệp,TEX3123,2,3,0.5,5
+IT2,Hệ nhúng, IT4210,3,4.5,0.6,6
+IT2,Phát triển ứng dụng cho thiết bị di động, IT4785,2,3,0.6,5
+IT2,IoT và ứng dụng, IT4735,2,3,0.5,7
+IT2,Thiết kế và triển khai mạng IP, IT4651,3,5,0.5,6
+IT2,Công nghệ Web và dịch vụ trực tuyến, IT4409,3,4,0.6,7
+IT2,Lưu trữ và xử lý dữ liệu lớn, IT4931,3,4,0.6,8
+IT2,Truyền thông đa phương tiện, IT4681,3,4.5,0.6,7
+IT2,An ninh mạng, IT4263,3,5,0.6,7
+IT2,Mật mã ứng dụng, IT4025,3,4,0.6,7
+IT2,Phòng chống tấn công mạng,IT4831,2,3.5,0.6,8
+IT2,Thực tập kỹ thuật, IT4991,2,4,0.5,7
+IT2,Đồ án tốt nghiệp Cử nhân, IT4997,6,15,0.5,8

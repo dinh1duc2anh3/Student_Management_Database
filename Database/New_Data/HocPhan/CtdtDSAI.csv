@@ -1,68 +1,68 @@
-TenHP,MaHP,SoTinHocPhan,SoTinHocPhi,TrongSo,Ky
-Triết học Mác-Lênin,SSH1111,3,3,0.5,1
-Kinh tế chính trị Mác- Lênin,SSH1121,2,2,0.5,2
-Chủ nghĩa xã hội khoa học,SSH1131,2,2,0.5,3
-Lịch sử Đảng Cộng sản Việt Nam,SSH1141,2,2,0.5,4
-Tư tưởng Hồ Chí Minh,SSH1151,2,2,0.5,4
-Pháp luật đại cương,EM1170,2,2,0.5,1
-Lý luận TDTT,PE1014,0,1.5,0.5,1
-Bơi lội,PE1024,0,1.5,0.5,
-Bóng đá 1,PE2201,0,1.5,0.5,3
-Bóng đá 2,PE2202,0,1.5,0.5,4
-Bóng chuyền 1,PE2101,0,1.5,0.5,3
-Bóng chuyền 2,PE2102,0,1.5,0.5,5
-Bóng rổ 1,PE2301,0,1.5,0.5,4
-Bóng rổ 2,PE2302,0,1.5,0.5,
-Bóng bàn 1,PE2401,0,1.5,0.5,5
-Bóng bàn 2,PE2402,0,1.5,0.5,
-Đường lối quân sự của Đảng,MIL1110,0,3,0.3,1
-Công tác quốc phòng- an ninh,MIL1120,0,3,0.3,2
-QS chung và KCT bắn súng AK,MIL1130,0,5,0.3,2
-IELTS Listening 1,FL1120,2,3,0.5,1
-IELTS Speaking 1,FL1121,1,2,0.5,1
-IELTS Reading 1,FL1122,1,2,0.5,1
-IELTS Writing 1,FL1123,2,3,0.5,1
-IELTS Listening 2,FL1124,2,3,0.5,2
-IELTS Speaking 2,FL1125,1,2,0.5,2
-IELTS Reading 2,FL1126,1,2,0.5,2
-IELTS Writing 2,FL1127,2,3,0.5,2
-Nhập môn lập trình,IT1110E,4,5.5,0.5,2
-Thống kê ứng dụng và phân tích thực nghiệm,IT2022E,3,4,0.6,4
-Discrete Math,IT3020E,3,4,0.5,3
-Tối ưu hóa,IT3052E,3,4,0.6,3
-Giải tích I,MI1111E,4,5,0.5,1
-Giải tích II,MI1121E,3,4,0.7,2
-Giải tích III,MI1131E,3,4,0.5,3
-Đại số,MI1141E,4,5,0.5,1
-Probability and Statistics,MI2020E,2,3,0.5,2
-Basic Physics,PH1110E,3,4.5,0.7,2
-Cấu trúc dữ liệu và giải thuật,IT3010E,3,4,0.7,3
-Kiến trúc máy tính,IT3030E,3,4,0.7,5
-Operating System,IT3070E,3,4,0.5,5
-Computer Networks,IT3080E,3,4.5,0.5,5
-Cơ sở dữ liệu,IT3090E,3,4.5,0.5,4
-Object-oriented Programming,IT3100E,3,4.5,0.5,4
-Introduction to Artificial Intelligence,IT3160E,3,4,0.6,3
-Nhập môn Công nghệ phần mềm,IT3180E,3,4,0.6,6
-Học máy,IT3190E,3,4,0.6,4
-Introduction to Deep Learning,IT3320E,2,3,0.5,5
-Project I,IT3910E,2,4,0.7,5
-Project II,IT3930E,2,4,0.7,6
-Project III,IT3940E,3,6,0.7,7
-Nhập môn an toàn thông tin,IT4010E,3,4,0.6,5
-Data Visualization,IT4023E,2,3,0.6,6
-Parallel and Distributed Programming,IT4130E,3,4,0.6,6
-Introduction to Data Science,IT4142E,2,3,0.6,5
-Computer Vision,IT4343E,3,4,0.6,6
-Natural Language Processing,IT4772E,3,4,0.6,6
-Technical Writing and Presentation,IT2030,3,4,0.5,6
-Kỹ năng mềm,ED3220,2,3,0.7,3
-Tâm lý học ứng dụng,ED3280,2,3,0.5,4
-Thiết kế mỹ thuật công nghiệp,TEX3123,2,3,0.5,5
-Internship,IT4991E,2,5,0.7,6
-Phân tích thiết kế hệ thống,IT3120E,2,3,0.6,7
-Mathematical Modelling,IT4033E,2,3,0.5,8
-Big Data Storage and Processing,IT4043E,3,4,0.6,7
-Introduction to Business Analytics,IT4063E,2,3,0.6,7
-Web Mining,IT4868E,3,4,0.6,7
-Bachelor Thesis,IT4125E,6,15,0.5,8
+MaNganh,TenHP,MaHP,SoTinHocPhan,SoTinHocPhi,TrongSo,Ky
+DSAI,Triết học Mác-Lênin,SSH1111,3,3,0.5,1
+DSAI,Kinh tế chính trị Mác- Lênin,SSH1121,2,2,0.5,2
+DSAI,Chủ nghĩa xã hội khoa học,SSH1131,2,2,0.5,3
+DSAI,Lịch sử Đảng Cộng sản Việt Nam,SSH1141,2,2,0.5,4
+DSAI,Tư tưởng Hồ Chí Minh,SSH1151,2,2,0.5,4
+DSAI,Pháp luật đại cương,EM1170,2,2,0.5,1
+DSAI,Lý luận TDTT,PE1014,0,1.5,0.5,1
+DSAI,Bơi lội,PE1024,0,1.5,0.5,
+DSAI,Bóng đá 1,PE2201,0,1.5,0.5,3
+DSAI,Bóng đá 2,PE2202,0,1.5,0.5,4
+DSAI,Bóng chuyền 1,PE2101,0,1.5,0.5,3
+DSAI,Bóng chuyền 2,PE2102,0,1.5,0.5,5
+DSAI,Bóng rổ 1,PE2301,0,1.5,0.5,4
+DSAI,Bóng rổ 2,PE2302,0,1.5,0.5,
+DSAI,Bóng bàn 1,PE2401,0,1.5,0.5,5
+DSAI,Bóng bàn 2,PE2402,0,1.5,0.5,
+DSAI,Đường lối quân sự của Đảng,MIL1110,0,3,0.3,1
+DSAI,Công tác quốc phòng- an ninh,MIL1120,0,3,0.3,2
+DSAI,QS chung và KCT bắn súng AK,MIL1130,0,5,0.3,2
+DSAI,IELTS Listening 1,FL1120,2,3,0.5,1
+DSAI,IELTS Speaking 1,FL1121,1,2,0.5,1
+DSAI,IELTS Reading 1,FL1122,1,2,0.5,1
+DSAI,IELTS Writing 1,FL1123,2,3,0.5,1
+DSAI,IELTS Listening 2,FL1124,2,3,0.5,2
+DSAI,IELTS Speaking 2,FL1125,1,2,0.5,2
+DSAI,IELTS Reading 2,FL1126,1,2,0.5,2
+DSAI,IELTS Writing 2,FL1127,2,3,0.5,2
+DSAI,Nhập môn lập trình,IT1110E,4,5.5,0.5,2
+DSAI,Thống kê ứng dụng và phân tích thực nghiệm,IT2022E,3,4,0.6,4
+DSAI,Discrete Math,IT3020E,3,4,0.5,3
+DSAI,Tối ưu hóa,IT3052E,3,4,0.6,3
+DSAI,Giải tích I,MI1111E,4,5,0.5,1
+DSAI,Giải tích II,MI1121E,3,4,0.7,2
+DSAI,Giải tích III,MI1131E,3,4,0.5,3
+DSAI,Đại số,MI1141E,4,5,0.5,1
+DSAI,Probability and Statistics,MI2020E,2,3,0.5,2
+DSAI,Basic Physics,PH1110E,3,4.5,0.7,2
+DSAI,Cấu trúc dữ liệu và giải thuật,IT3010E,3,4,0.7,3
+DSAI,Kiến trúc máy tính,IT3030E,3,4,0.7,5
+DSAI,Operating System,IT3070E,3,4,0.5,5
+DSAI,Computer Networks,IT3080E,3,4.5,0.5,5
+DSAI,Cơ sở dữ liệu,IT3090E,3,4.5,0.5,4
+DSAI,Object-oriented Programming,IT3100E,3,4.5,0.5,4
+DSAI,Introduction to Artificial Intelligence,IT3160E,3,4,0.6,3
+DSAI,Nhập môn Công nghệ phần mềm,IT3180E,3,4,0.6,6
+DSAI,Học máy,IT3190E,3,4,0.6,4
+DSAI,Introduction to Deep Learning,IT3320E,2,3,0.5,5
+DSAI,Project I,IT3910E,2,4,0.7,5
+DSAI,Project II,IT3930E,2,4,0.7,6
+DSAI,Project III,IT3940E,3,6,0.7,7
+DSAI,Nhập môn an toàn thông tin,IT4010E,3,4,0.6,5
+DSAI,Data Visualization,IT4023E,2,3,0.6,6
+DSAI,Parallel and Distributed Programming,IT4130E,3,4,0.6,6
+DSAI,Introduction to Data Science,IT4142E,2,3,0.6,5
+DSAI,Computer Vision,IT4343E,3,4,0.6,6
+DSAI,Natural Language Processing,IT4772E,3,4,0.6,6
+DSAI,Technical Writing and Presentation,IT2030,3,4,0.5,6
+DSAI,Kỹ năng mềm,ED3220,2,3,0.7,3
+DSAI,Tâm lý học ứng dụng,ED3280,2,3,0.5,4
+DSAI,Thiết kế mỹ thuật công nghiệp,TEX3123,2,3,0.5,5
+DSAI,Internship,IT4991E,2,5,0.7,6
+DSAI,Phân tích thiết kế hệ thống,IT3120E,2,3,0.6,7
+DSAI,Mathematical Modelling,IT4033E,2,3,0.5,8
+DSAI,Big Data Storage and Processing,IT4043E,3,4,0.6,7
+DSAI,Introduction to Business Analytics,IT4063E,2,3,0.6,7
+DSAI,Web Mining,IT4868E,3,4,0.6,7
+DSAI,Bachelor Thesis,IT4125E,6,15,0.5,8
