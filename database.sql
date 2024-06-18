@@ -3,8 +3,8 @@
 
 CREATE TABLE public."HeDaoTao"
 (
-    "TenHDT" character(100)  NOT NULL,
-    "MaHDT" character(100) NOT NULL,
+    "TenHDT" character varying(100)  NOT NULL,
+    "MaHDT" character varying(100) NOT NULL,
 	"TienTinChi" integer NOT NULL,
     CONSTRAINT "HeDaoTao_pkey" PRIMARY KEY ("MaHDT")
 );
@@ -12,7 +12,7 @@ CREATE TABLE public."HeDaoTao"
 CREATE TABLE public."Nganh"
 (
     "TenNganh" character(100)  NOT NULL,
-    "MaNganh" character(10) NOT NULL,
+    "MaNganh" character varying(10) NOT NULL,
 
     CONSTRAINT "Nganh_pkey" PRIMARY KEY ("MaNganh")
 );
@@ -20,9 +20,9 @@ CREATE TABLE public."Nganh"
 CREATE TABLE public."Lop"
 (
     "TenLop" character varying(100)  NOT NULL,	
-    "MaLop" character(10)   NOT NULL,
-	"MaHDT" character(100)   NOT NULL,
-    "MaNganh" character(10)  NOT NULL,
+    "MaLop" character varying(10)   NOT NULL,
+	"MaHDT" character varying(100)   NOT NULL,
+    "MaNganh" character varying(10)  NOT NULL,
     "Khoa" character(100) NOT NULL,
     "SiSo" integer NOT NULL,	
     "MaLopTruong" integer NOT NULL,    
@@ -38,7 +38,7 @@ CREATE TABLE public."SinhVien"
 (
     "MaSV" integer NOT NULL,
     "HoTenSV" character varying(100) ,
-    "MaLop" character(10)  NOT NULL,
+    "MaLop" character varying(10)  NOT NULL,
     "NienKhoa" integer NOT NULL,
 
     CONSTRAINT "SinhVien_pkey" PRIMARY KEY ("MaSV"),
@@ -46,11 +46,10 @@ CREATE TABLE public."SinhVien"
         REFERENCES public."Lop" ("MaLop") MATCH SIMPLE
 );
 
-
 CREATE TABLE public."HocPhan"
 (
-    "TenHP" character(100)  NOT NULL,
-    "MaHP" character(100)  NOT NULL,
+    "TenHP" character varying(100)  NOT NULL,
+    "MaHP" character varying(100)  NOT NULL,
     "SoTinHocPhan" integer NOT NULL,
     "SoTinHocPhi" float NOT NULL,
 	"TrongSo" float not NULL,
@@ -75,11 +74,11 @@ CREATE TABLE public."LopHoc"
 (
     "MaLopHoc" character(6)  NOT NULL,
     "Ky" character(10)  NOT NULL,
-    "DiaDiem" character(100) NOT NULL,
-    "MaHP" character(10)  NOT NULL,
+    "DiaDiem" character varying(100) NOT NULL,
+    "MaHP" character varying(10)  NOT NULL,
     "ThoiGian" date NOT NULL,
     "SiSo" integer NOT NULL,
-    "MaGV" integer  NOT NULL,
+    "MaGV" bigint  NOT NULL,
 
     CONSTRAINT "LopHoc_pkey" PRIMARY KEY ("MaLopHoc"),
     CONSTRAINT "LopHoc_HocPhan" FOREIGN KEY ("MaHP")
@@ -93,7 +92,7 @@ CREATE TABLE public."LopThi"
     "MaLopHoc" character(6)  NOT NULL,
     "MaLopThi" character(6)  NOT NULL,
     "ThoiGian" date NOT NULL,
-    "DiaDiem" character(100) NOT NULL, 
+    "DiaDiem" character varying(100) NOT NULL, 
 
     CONSTRAINT "LopThi_pkey" PRIMARY KEY ("MaLopThi"),
     CONSTRAINT "LopThi_LopHoc" FOREIGN KEY ("MaLopHoc")  
@@ -103,10 +102,11 @@ CREATE TABLE public."LopThi"
 CREATE TABLE public."DangKi"
 (
     "MaSV" integer NOT NULL,
-    "MaHP" character(100)  NOT NULL,
-    "MaLopHoc" character(6)  NOT NULL,
+    "MaHP" character varying(100)  NOT NULL,
+    "Ky" integer NOT NULL,
+    "MaLopHoc" character(6),
 
-    CONSTRAINT "DangKi_pkey" PRIMARY KEY ("MaSV","MaHP","MaLopHoc"),
+    CONSTRAINT "DangKi_pkey" PRIMARY KEY ("MaSV","MaHP","Ky"),
 
     CONSTRAINT "DangKi_HocPhan" FOREIGN KEY ("MaHP")
         REFERENCES public."HocPhan" ("MaHP") MATCH SIMPLE,
@@ -122,7 +122,7 @@ CREATE TABLE public."DiemRenLuyen"
 (
     "MaSV" integer NOT NULL,
     "Ky" character(10)  NOT NULL,
-    "XepLoai" character(50) ,
+    "XepLoai" character varying(50) ,
     "DiemHocTap" integer NOT NULL,
     "DiemNoiQuy" integer NOT NULL,
     "DiemYThucCongDan" integer NOT NULL,
@@ -646,10 +646,20 @@ BEGIN
     END LOOP;
 END $$;
 
+--------------------DATA cho bảng Diem------------------------
+
+INSERT INTO public."Diem" ("MaSV", "MaHP", "Ky", "DiemGK", "DiemCK", "DiemKTHP")
+SELECT
+    dk."MaSV",
+    dk."MaHP",
+    dk."Ky",
+    ROUND(RANDOM() * 9 + 1)::integer AS "DiemGK",  -- Random điểm từ 1 đến 10 cho Điểm GK
+    ROUND(RANDOM() * 9 + 1)::integer AS "DiemCK",  -- Random điểm từ 1 đến 10 cho Điểm CK
+    NULL AS "DiemKTHP"
+FROM public."DangKi" dk
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
---current
 --------------------DATA cho bảng DangKi------------------------
 
 DO
@@ -773,6 +783,52 @@ BEGIN
     END LOOP;
     RAISE NOTICE 'Inserted % rows', inserted_rows;
 END $$;
+
+--current
+
+
+
+
+DO $$
+DECLARE
+    maSV INT;
+    maHP RECORD;
+    
+BEGIN
+    -- Giả sử MaLopHoc là một giá trị cố định hoặc bạn có logic để xác định MaLopHoc
+     -- Bạn cần xác định giá trị thực tế của MaLopHoc dựa trên dữ liệu của bạn
+    
+    -- Lặp qua các sinh viên có MaSV từ 20210001 đến 20210050
+    FOR maSV IN 20210001..20210050 LOOP
+        -- Chọn các học phần thuộc kỳ 1 của chương trình đào tạo ngành Việt Nhật
+        FOR maHP IN 
+            SELECT "MaHP"
+            FROM public."CtdtVietNhat"
+            WHERE "MaNganh" = 'VN' AND "Ky" = 1
+        LOOP
+            -- Đăng ký từng học phần cho sinh viên
+            INSERT INTO public."DangKi" ("MaSV", "MaHP", "MaLopHoc")
+            VALUES (maSV, maHP."MaHP", maLopHoc);
+        END LOOP;
+    END LOOP;
+END $$;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 --------------------------------------------------------------------------TRIGGER + FUNCTION------------------------------------------------------------------------------------- 
 
@@ -905,3 +961,27 @@ CREATE TRIGGER trg_update_ho_ten_sv
 BEFORE INSERT OR UPDATE ON public."LyLichSV"
 FOR EACH ROW
 EXECUTE FUNCTION update_ho_ten_sv();
+	
+-- trigger:  tự động tính kết quả kthp từ điểm gk và ck , trọng số theo mã hp
+CREATE OR REPLACE FUNCTION calculate_kthp()
+RETURNS TRIGGER AS $$
+DECLARE
+    trong_so double precision;
+BEGIN
+    SELECT "TrongSo" INTO trong_so
+    FROM public."HocPhan"
+    WHERE "MaHP" = NEW."MaHP";
+    
+    NEW."DiemKTHP" := NEW."DiemGK" * (1 - trong_so) + NEW."DiemCK" * trong_so;
+    
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Tạo trigger
+CREATE TRIGGER trg_calculate_kthp
+BEFORE INSERT OR UPDATE ON public."Diem"
+FOR EACH ROW
+EXECUTE FUNCTION calculate_kthp();
+
+
