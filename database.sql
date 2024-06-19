@@ -1,5 +1,4 @@
--------------------------------------------------------------------------------------
---Create tables
+--------------------------------------------------------------------------TAO TABLE------------------------------------------------------------------------------------- 
 
 CREATE TABLE public."HeDaoTao"
 (
@@ -48,6 +47,30 @@ CREATE TABLE public."SinhVien"
 
 CREATE TABLE public."HocPhan"
 (
+    "TenHP" character varying(100)  NOT NULL,
+    "MaHP" character varying(100)  NOT NULL,
+    "SoTinHocPhan" integer NOT NULL,
+    "SoTinHocPhi" float NOT NULL,
+	"TrongSo" float not NULL,
+
+    CONSTRAINT "HocPhan_pkey" PRIMARY KEY ("MaHP")
+);
+
+CREATE TABLE public."HocPhanChiTiet"
+(   
+    "MaNganh" character varying(10),
+    "TenHP" character varying(100)  NOT NULL,
+    "MaHP" character varying(100)  NOT NULL,
+    "SoTinHocPhan" integer NOT NULL,
+    "SoTinHocPhi" float NOT NULL,
+	"TrongSo" float not NULL,
+    "Ky" integer,
+
+    CONSTRAINT "HocPhan_pkey" PRIMARY KEY ("MaHP")
+);
+
+CREATE TABLE public."HocPhan"
+(   
     "TenHP" character varying(100)  NOT NULL,
     "MaHP" character varying(100)  NOT NULL,
     "SoTinHocPhan" integer NOT NULL,
@@ -277,9 +300,6 @@ CREATE TABLE public."CtdtDSAI"
         REFERENCES public."Nganh" ("MaNganh") MATCH SIMPLE
 );
 
--------------------------------------------------------------------------------------
-
-
 --------------------------------------------------------------------------TAO DATA------------------------------------------------------------------------------------- 
 
 --------------------DATA cho bảng HeDaoTao------------------------
@@ -319,37 +339,29 @@ DECLARE
     TongDiem INT;
     RandomGrade INT;
 BEGIN
-    -- Generate data for 50 students from 20210001 to 20210050
     FOR i IN 1..50 LOOP
         MaSV := 20210000 + i;
 
-        -- Check if the record already exists
         IF NOT EXISTS (SELECT 1 FROM public."DiemRenLuyen" WHERE "MaSV" = MaSV AND "Ky" = Ky) THEN
-            -- Randomly assign individual scores
             DiemHocTap := FLOOR(RANDOM() * 20+10);  
             DiemNoiQuy := FLOOR(RANDOM() * 15+10);  
             DiemYThucCongDan := FLOOR(RANDOM() * 15+10);  
             DiemYThucHoatDong := FLOOR(RANDOM() * 10+10);  
 
-            -- Insert the record
             INSERT INTO public."DiemRenLuyen" ("MaSV", "Ky", "DiemHocTap", "DiemNoiQuy", "DiemYThucCongDan", "DiemYThucHoatDong")
             VALUES (MaSV, Ky, DiemHocTap, DiemNoiQuy, DiemYThucCongDan, DiemYThucHoatDong);
         END IF;
     END LOOP;
 
-    -- Generate data for 300 students from 20220001 to 20220300
     FOR i IN 1..300 LOOP
         MaSV := 20220000 + i;
 
-        -- Check if the record already exists
         IF NOT EXISTS (SELECT 1 FROM public."DiemRenLuyen" WHERE "MaSV" = MaSV AND "Ky" = Ky) THEN
-            -- Randomly assign individual scores
            DiemHocTap := FLOOR(RANDOM() * 20+10);  
             DiemNoiQuy := FLOOR(RANDOM() * 15+10);  
             DiemYThucCongDan := FLOOR(RANDOM() * 15+10);  
             DiemYThucHoatDong := FLOOR(RANDOM() * 10+10);   
 
-            -- Insert the record
             INSERT INTO public."DiemRenLuyen" ("MaSV", "Ky", "DiemHocTap", "DiemNoiQuy", "DiemYThucCongDan", "DiemYThucHoatDong")
             VALUES (MaSV, Ky, DiemHocTap, DiemNoiQuy, DiemYThucCongDan, DiemYThucHoatDong);
         END IF;
@@ -370,13 +382,10 @@ DECLARE
     TongDiem INT;
     RandomGrade INT;
 BEGIN
-    -- Generate data for 50 students from 20210001 to 20210050
     FOR i IN 1..50 LOOP
         MaSV := 20210000 + i;
 
-        -- Check if the record already exists
         IF NOT EXISTS (SELECT 1 FROM public."DiemRenLuyen" WHERE "MaSV" = MaSV AND "Ky" = Ky) THEN
-            -- Randomly assign individual scores
             DiemHocTap := FLOOR(RANDOM() * 20+10);  
             DiemNoiQuy := FLOOR(RANDOM() * 15+10);  
             DiemYThucCongDan := FLOOR(RANDOM() * 15+10);  
@@ -388,13 +397,10 @@ BEGIN
         END IF;
     END LOOP;
 
-    -- Generate data for 300 students from 20220001 to 20220300
     FOR i IN 1..300 LOOP
         MaSV := 20220000 + i;
 
-        -- Check if the record already exists
         IF NOT EXISTS (SELECT 1 FROM public."DiemRenLuyen" WHERE "MaSV" = MaSV AND "Ky" = Ky) THEN
-            -- Randomly assign individual scores
            DiemHocTap := FLOOR(RANDOM() * 20+10);  
             DiemNoiQuy := FLOOR(RANDOM() * 15+10);  
             DiemYThucCongDan := FLOOR(RANDOM() * 15+10);  
@@ -409,7 +415,7 @@ END $$;
 
 
 --------------------DATA cho bảng SinhVien------------------------
--- SV lớp VN02-66 , tương tự với các lớp khác K67
+-- SV lớp VN02-66 , tương tự với các lớp khác K67 : VN07-67 VP01-67 ICT01-67 IT103-67  IT201-67  DSAI01-67
 DO $$
 BEGIN
     FOR i IN 1..50 LOOP
@@ -417,13 +423,6 @@ BEGIN
         VALUES (20210000 + i, 'VN02-66', 66);
     END LOOP;
 END $$;
-
--- SV lớp VN07-67
--- SV lớp VP01-67
--- SV lớp ICT01-67
--- SV lớp IT103-67 
--- SV lớp IT201-67
--- SV lớp DSAI01-67
 
 --------------------DATA cho bảng LyLichSV------------------------
 
@@ -531,7 +530,7 @@ DECLARE
 BEGIN
 
     MaSV := 20210000;
-    FOR i IN 1..50 LOOP  -- Tạo 50 bản ghi ví dụ (có thể điều chỉnh số lượng)
+    FOR i IN 1..50 LOOP 
         MaSV := MaSV + 1;
         IF MOD(MaSV,4) = 0 THEN
             ChungChi := CASE floor(random() * 4)
@@ -543,19 +542,19 @@ BEGIN
 
             IF ChungChi = 'IELTS' THEN
                 Diem := ielts_arr[floor(random() * 13)];
-                ThoiHan := 2;  -- Ví dụ cho thời hạn 2 năm
+                ThoiHan := 2; 
             ELSIF ChungChi = 'TOEIC' THEN
-                Diem := FLOOR(random() * 891) + 100;  -- Random từ 100 đến 990
-                ThoiHan := 2;  -- Ví dụ cho thời hạn 2 năm
+                Diem := FLOOR(random() * 891) + 100;  
+                ThoiHan := 2;  
             ELSIF ChungChi = 'FE' THEN
-                Diem := NULL;  -- Điểm là NULL
-                ThoiHan := 99;  -- Ví dụ cho thời hạn không xác định
-            ELSE  -- ChungChi = 'JLPT'
+                Diem := NULL;  
+                ThoiHan := 99;  
+            ELSE 
                 Diem := jlpt_arr[ floor(random() * 5)];
-                ThoiHan := 99;  -- Ví dụ cho thời hạn không xác định
+                ThoiHan := 99;  
             END IF;
 
-            ThoiGian := make_date(2021, floor(random() * 12 + 1)::int, floor(random() * 28 + 1)::int);  -- Ngày trong năm qua lại
+            ThoiGian := make_date(2021, floor(random() * 12 + 1)::int, floor(random() * 28 + 1)::int); 
 
             INSERT INTO public."CacChungChi" ("MaSV", "Ten", "ThoiGian", "ThoiHan", "Diem")
             VALUES (MaSV, ChungChi, ThoiGian, ThoiHan, Diem);
@@ -564,7 +563,7 @@ BEGIN
 
     
     MaSV := 20220000;
-    FOR i IN 1..300 LOOP  -- Tạo 50 bản ghi ví dụ (có thể điều chỉnh số lượng)
+    FOR i IN 1..300 LOOP  
         MaSV := MaSV + 1;
         IF MOD(MaSV,5) = 0 THEN
             ChungChi := CASE floor(random() * 4)
@@ -576,19 +575,19 @@ BEGIN
 
             IF ChungChi = 'IELTS' THEN
                 Diem := ielts_arr[floor(random() * 13)];
-                ThoiHan := 2;  -- Ví dụ cho thời hạn 2 năm
+                ThoiHan := 2; 
             ELSIF ChungChi = 'TOEIC' THEN
-                Diem := FLOOR(random() * 891) + 100;  -- Random từ 100 đến 990
-                ThoiHan := 2;  -- Ví dụ cho thời hạn 2 năm
+                Diem := FLOOR(random() * 891) + 100;  
+                ThoiHan := 2;  
             ELSIF ChungChi = 'FE' THEN
-                Diem := NULL;  -- Điểm là NULL
-                ThoiHan := 99;  -- Ví dụ cho thời hạn không xác định
-            ELSE  -- ChungChi = 'JLPT'
+                Diem := NULL;  
+                ThoiHan := 99;  
+            ELSE 
                 Diem := jlpt_arr[ floor(random() * 5)];
-                ThoiHan := 99;  -- Ví dụ cho thời hạn không xác định
+                ThoiHan := 99;  
             END IF;
 
-            ThoiGian := make_date(2021, floor(random() * 12 + 1)::int, floor(random() * 28 + 1)::int);  -- Ngày trong năm qua lại
+            ThoiGian := make_date(2021, floor(random() * 12 + 1)::int, floor(random() * 28 + 1)::int); 
 
             INSERT INTO public."CacChungChi" ("MaSV", "Ten", "ThoiGian", "ThoiHan", "Diem")
             VALUES (MaSV, ChungChi, ThoiGian, ThoiHan, Diem);
@@ -653,14 +652,93 @@ SELECT
     dk."MaSV",
     dk."MaHP",
     dk."Ky",
-    ROUND(RANDOM() * 9 + 1)::integer AS "DiemGK",  -- Random điểm từ 1 đến 10 cho Điểm GK
-    ROUND(RANDOM() * 9 + 1)::integer AS "DiemCK",  -- Random điểm từ 1 đến 10 cho Điểm CK
+    ROUND(RANDOM() * 9 + 1)::integer AS "DiemGK",  
+    ROUND(RANDOM() * 9 + 1)::integer AS "DiemCK",  
     NULL AS "DiemKTHP"
 FROM public."DangKi" dk
 
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 --------------------DATA cho bảng DangKi------------------------
+
+DO $$
+DECLARE
+    maSV INT;
+    maHP RECORD;
+    maNganh CHARACTER(10);
+BEGIN
+    FOR maSV IN (
+		select "MaSV"
+		from public."SinhVien") 
+	LOOP
+        -- Lấy MaNganh của sinh viên từ bảng SinhVien và Lop
+        SELECT lop."MaNganh"
+        INTO maNganh
+        FROM public."SinhVien" sv
+        JOIN public."Lop" lop ON sv."MaLop" = lop."MaLop"
+        WHERE sv."MaSV" = maSV;
+        
+        -- Chọn các học phần thuộc kỳ 1 của chương trình đào tạo ngành của sinh viên
+        FOR maHP IN 
+            SELECT "MaHP"
+            FROM public."HocPhanChiTiet"
+            WHERE "MaNganh" = maNganh AND "Ky" = 1
+        LOOP
+            -- Đăng ký từng học phần cho sinh viên
+            INSERT INTO public."DangKi" ("MaSV", "MaHP","Ky" )
+            VALUES (maSV, maHP."MaHP",1);
+        END LOOP;
+    END LOOP;
+END $$;
+
+DO $$
+DECLARE
+    v_MaHP character varying(100);
+    v_MaLopHoc character(6) := '123001';  
+    v_count integer;
+BEGIN
+    FOR v_MaHP IN (SELECT DISTINCT "MaHP" 
+                   FROM public."DangKi")
+    LOOP
+        SELECT COUNT(*) INTO v_count FROM public."DangKi" WHERE "MaHP" = v_MaHP;
+
+        FOR i IN 0..((v_count - 1) / 100)
+        LOOP
+            UPDATE public."DangKi"
+            SET "MaLopHoc" = v_MaLopHoc
+            WHERE "MaHP" = v_MaHP
+              AND "MaLopHoc" IS NULL
+              AND ctid IN (
+                  SELECT ctid
+                  FROM public."DangKi"
+                  WHERE "MaHP" = v_MaHP
+                  AND "MaLopHoc" IS NULL
+                  LIMIT 100
+              );
+
+            v_MaLopHoc := to_char(to_number(v_MaLopHoc, '999999') + 1, 'FM000000');
+        END LOOP;
+    END LOOP;
+END $$;
+
+
+--------------------DATA cho bảng LopHoc ------------------------
+
+INSERT INTO public."LopHoc" ("MaLopHoc", "Ky", "MaHP" )
+SELECT DISTINCT 
+    "MaLopHoc",
+    "Ky",
+    "MaHP"
+FROM public."DangKi"
+WHERE "MaLopHoc" IS NOT NULL;
+
+
+UPDATE public."LopHoc" lh
+SET "SiSo" = (
+    SELECT COUNT(*)
+    FROM public."DangKi" dk
+    WHERE dk."MaLopHoc" = lh."MaLopHoc"
+);
+
+
 
 DO
 $$
@@ -681,21 +759,6 @@ DECLARE
         'D9-301', 'D9-302', 'D9-303', 'D9-304', 'D9-305', 'D9-306',
         'D9-401', 'D9-402', 'D9-403', 'D9-404', 'D9-405', 'D9-406',
         'D9-501', 'D9-502', 'D9-503', 'D9-504', 'D9-505', 'D9-506',
-        'D7-101', 'D7-102', 'D7-103', 'D7-104', 'D7-105', 'D7-106',
-        'D7-201', 'D7-202', 'D7-203', 'D7-204', 'D7-205', 'D7-206',
-        'D7-301', 'D7-302', 'D7-303', 'D7-304', 'D7-305', 'D7-306',
-        'D7-401', 'D7-402', 'D7-403', 'D7-404', 'D7-405', 'D7-406',
-        'D7-501', 'D7-502', 'D7-503', 'D7-504', 'D7-505', 'D7-506',
-        'D5-101', 'D5-102', 'D5-103', 'D5-104', 'D5-105', 'D5-106',
-        'D5-201', 'D5-202', 'D5-203', 'D5-204', 'D5-205', 'D5-206',
-        'D5-301', 'D5-302', 'D5-303', 'D5-304', 'D5-305', 'D5-306',
-        'D5-401', 'D5-402', 'D5-403', 'D5-404', 'D5-405', 'D5-406',
-        'D5-501', 'D5-502', 'D5-503', 'D5-504', 'D5-505', 'D5-506',
-        'C7-101', 'C7-102', 'C7-103', 'C7-104', 'C7-105', 'C7-106',
-        'C7-201', 'C7-202', 'C7-203', 'C7-204', 'C7-205', 'C7-206',
-        'C7-301', 'C7-302', 'C7-303', 'C7-304', 'C7-305', 'C7-306',
-        'C7-401', 'C7-402', 'C7-403', 'C7-404', 'C7-405', 'C7-406',
-        'C7-501', 'C7-502', 'C7-503', 'C7-504', 'C7-505', 'C7-506'
     ];
 BEGIN
     FOR i IN 1..100 LOOP
@@ -713,135 +776,16 @@ BEGIN
 END;
 $$;
 
-DO $$
-DECLARE
-    r RECORD;
-    inserted_rows INT := 0;
-BEGIN
-    FOR r IN 
-        SELECT 
-            series.MaSV,
-            MaHPs.MHP AS MaHP,
-            LPAD((FLOOR(RANDOM() * (123100 - 123001 + 1))::BIGINT + 123001)::TEXT, 6, '0') AS MaLopHoc
-        FROM
-            generate_series(20220001, 20220300) AS series(MaSV)
-        CROSS JOIN 
-            (SELECT unnest(ARRAY[
-               'JP2210',
- 'JP2220',
- 'JP3110',
- 'JP3120',
- 'MI1111',
- 'MI1114',
- 'MI1121',
- 'MI1124',
- 'MI1131',
- 'MI1134',
- 'MI1141',
- 'MI1144',
- 'MI2020',
- 'MI2021',
- 'MI3052',
- 'MIL1110'  ,                                                                                            
- 'MIL1120' ,                                                                                            
- 'MIL1130',                                                                                              
- 'PE1014',
- 'PE1024',
- 'PE2101',
- 'PE2102',
- 'PE2201',
- 'PE2202',
- 'PE2301',
- 'PE2302',
- 'PE2401',
- 'PE2402',
- 'PH1110',
- 'PH1120',
- 'QT0413',
- 'QT0423',
- 'QT0433',
- 'QT0443',
- 'QT3413',
- 'QT3423',
- 'SSH1111'   ,                                                                                           
- 'SSH1121'  ,                                                                                            
- 'SSH1131' ,                                                                                             
- 'SSH1141',                                                                                              
- 'SSH1151',                                                                                           
- 'TEX3123'                   
-            ]) AS MHP) AS MaHPs
-        ORDER BY RANDOM()
-        LIMIT 1000
-    LOOP
-        BEGIN
-            INSERT INTO "DangKi" ("MaSV", "MaHP", "MaLopHoc")
-            VALUES (r.MaSV, r.MaHP, r.MaLopHoc);
-            inserted_rows := inserted_rows + 1;
-        EXCEPTION WHEN unique_violation THEN
-            -- Ignore duplicate rows
-        END;
-    END LOOP;
-    RAISE NOTICE 'Inserted % rows', inserted_rows;
-END $$;
+----------------------------------------------------------------TRIGGER + FUNCTION------------------------------------------------------------------------------------- 
 
---current
-
-
-
-
-DO $$
-DECLARE
-    maSV INT;
-    maHP RECORD;
-    
-BEGIN
-    -- Giả sử MaLopHoc là một giá trị cố định hoặc bạn có logic để xác định MaLopHoc
-     -- Bạn cần xác định giá trị thực tế của MaLopHoc dựa trên dữ liệu của bạn
-    
-    -- Lặp qua các sinh viên có MaSV từ 20210001 đến 20210050
-    FOR maSV IN 20210001..20210050 LOOP
-        -- Chọn các học phần thuộc kỳ 1 của chương trình đào tạo ngành Việt Nhật
-        FOR maHP IN 
-            SELECT "MaHP"
-            FROM public."CtdtVietNhat"
-            WHERE "MaNganh" = 'VN' AND "Ky" = 1
-        LOOP
-            -- Đăng ký từng học phần cho sinh viên
-            INSERT INTO public."DangKi" ("MaSV", "MaHP", "MaLopHoc")
-            VALUES (maSV, maHP."MaHP", maLopHoc);
-        END LOOP;
-    END LOOP;
-END $$;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
---------------------------------------------------------------------------TRIGGER + FUNCTION------------------------------------------------------------------------------------- 
-
---Trigger: tự nhập 4 đầu điểm rèn luyện vào thì sẽ tự tính tổng drl và từ tổng điểm rl sẽ đưa ra xếp loại với 
+----------------Trigger: tự nhập 4 đầu điểm rèn luyện vào thì sẽ tự tính tổng drl và từ tổng điểm rl sẽ đưa ra xếp loại ---------------- 
 --tiêu chí : trên 80 là giỏi , trên 50 dưới 80 là khá, dưới 50 là trung bình
 
 CREATE OR REPLACE FUNCTION calculate_diem_ren_luyen()
 RETURNS TRIGGER AS $$
 BEGIN
-    -- Calculate TongDiem
     NEW."TongDiem" := NEW."DiemHocTap" + NEW."DiemNoiQuy" + NEW."DiemYThucCongDan" + NEW."DiemYThucHoatDong";
     
-    -- Determine XepLoai
     IF NEW."TongDiem" > 80 THEN
         NEW."XepLoai" := 'Giỏi';
     ELSIF NEW."TongDiem" > 50 THEN
@@ -859,15 +803,13 @@ BEFORE INSERT OR UPDATE ON public."DiemRenLuyen"
 FOR EACH ROW
 EXECUTE FUNCTION calculate_diem_ren_luyen();
 
-
--- Trigger: loại bỏ các dấu và lưu kết quả vào một cột Email mới khi có bất kỳ thay đổi nào trong các cột họ, tên đệm hoặc tên.
+----------------Function: loại bỏ dấu + biến thành chữ thường trong các cột họ, tên đệm hoặc tên----------------
 
 CREATE OR REPLACE FUNCTION remove_accents_and_lower_char(input_char CHAR)
 RETURNS CHAR AS $$
 DECLARE
     result_char CHAR;
 BEGIN
-    -- Loại bỏ các dấu và chuyển đổi sang ký tự thường
     SELECT translate(LOWER(input_char),
                            'áàảãạâấầẩẫậăắằẳẵặéèẻẽẹêếềểễệíìỉĩịóòỏõọôốồổỗộơớờởỡợúùủũụưứừửữựýỳỷỹỵđ',
                            'aaaaaaaaaaaaaaaaaeeeeeeeeeeeiiiiiooooooooooooooooouuuuuuuuuuuyyyyyd')
@@ -881,9 +823,8 @@ CREATE OR REPLACE FUNCTION remove_accents_and_lower_text(input_text TEXT)
 RETURNS TEXT AS $$
 DECLARE
     result_text TEXT := '';
-    needed_letter CHAR;  -- Sửa đổi thành CHAR để đảm bảo chỉ lưu trữ một ký tự
+    needed_letter CHAR; 
 BEGIN
-    -- Loại bỏ các dấu và chuyển đổi sang ký tự thường
     FOR i IN 1..length(input_text) LOOP
         SELECT remove_accents_and_lower_char(substr(input_text, i, 1)) INTO needed_letter;
         result_text := result_text || needed_letter;
@@ -893,7 +834,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
---Trigger: tự động tạo email từ các cột họ, tên đệm và tên của sinh viên trong bảng LyLichSV,
+----------------Trigger: tự động tạo email từ các cột họ, tên đệm và tên của sinh viên trong bảng LyLichSV----------------
 
 CREATE OR REPLACE FUNCTION generate_student_email()
 RETURNS TRIGGER AS $$
@@ -906,7 +847,6 @@ BEGIN
 	SELECT remove_accents_and_lower_text(NEW."TenSV") into TenKhongDau;
     email_text :=  TenKhongDau || '.' || HoKhongDau || (NEW."MaSV" - 20000000) || '@sis.hust.edu.vn';
 
-    -- Cập nhật cột Email trong bảng LyLichSV
     NEW."Email" := email_text;
 
     RETURN NEW;
@@ -919,7 +859,7 @@ FOR EACH ROW
 EXECUTE FUNCTION generate_email();
 
 
---Trigger: tự động tạo email từ các cột họ, tên đệm và tên của giảng viên trong bảng GiangVien,
+----------------Trigger: tự động tạo email từ các cột họ, tên đệm và tên của giảng viên trong bảng GiangVien----------------
 
 CREATE OR REPLACE FUNCTION generate_teacher_email()
 RETURNS TRIGGER AS $$
@@ -945,11 +885,10 @@ BEFORE INSERT OR UPDATE ON public."GiangVien"
 FOR EACH ROW
 EXECUTE FUNCTION generate_teacher_email();
 
--- Trigger để kết hợp các trường họ, tên đệm và tên của bảng LyLichSV thành HoTenSV trong bảng SinhVien
+----------------Trigger để kết hợp các trường họ, tên đệm và tên của bảng LyLichSV thành HoTenSV trong bảng SinhVien----------------
 CREATE OR REPLACE FUNCTION update_ho_ten_sv()
 RETURNS TRIGGER AS $$
 BEGIN
-    -- Cập nhật bảng SinhVien
     UPDATE public."SinhVien"
     SET "HoTenSV" = NEW."HoSV" || ' ' || NEW."TenDemSV" || ' ' || NEW."TenSV"
     WHERE "MaSV" = NEW."MaSV";
@@ -962,7 +901,7 @@ BEFORE INSERT OR UPDATE ON public."LyLichSV"
 FOR EACH ROW
 EXECUTE FUNCTION update_ho_ten_sv();
 	
--- trigger:  tự động tính kết quả kthp từ điểm gk và ck , trọng số theo mã hp
+----------------trigger:  tự động tính kết quả kthp từ điểm gk và ck , trọng số theo mã hp----------------
 CREATE OR REPLACE FUNCTION calculate_kthp()
 RETURNS TRIGGER AS $$
 DECLARE
@@ -972,16 +911,65 @@ BEGIN
     FROM public."HocPhan"
     WHERE "MaHP" = NEW."MaHP";
     
-    NEW."DiemKTHP" := NEW."DiemGK" * (1 - trong_so) + NEW."DiemCK" * trong_so;
+    NEW."DiemKTHP" := ROUND(NEW."DiemGK" * (1 - trong_so) + NEW."DiemCK" * trong_so, 2);
     
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
 
--- Tạo trigger
 CREATE TRIGGER trg_calculate_kthp
 BEFORE INSERT OR UPDATE ON public."Diem"
 FOR EACH ROW
 EXECUTE FUNCTION calculate_kthp();
 
 
+----------------trigger:  tự động thêm lớp học vào bảng LopHoc sau khi một mã lớp được xếp ở bảng DangKi----------------
+
+CREATE OR REPLACE FUNCTION add_to_lophoc()
+RETURNS TRIGGER AS $$
+BEGIN
+    INSERT INTO public."LopHoc" ("MaLopHoc", "Ky", "MaHP")
+    VALUES (
+        NEW."MaLopHoc",
+        NEW."Ky",
+        NEW."MaHP"
+    )
+    ON CONFLICT ("MaLopHoc") DO NOTHING; -- Avoid duplicates
+    
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_add_to_lophoc
+AFTER INSERT ON public."DangKi"
+FOR EACH ROW
+WHEN (NEW."MaLopHoc" IS NOT NULL)
+EXECUTE FUNCTION add_to_lophoc();
+
+----------------trigger:  tự cập nhật sĩ số của lớp học ở bảng dangki----------------
+CREATE OR REPLACE FUNCTION update_si_so_lop_hoc()
+RETURNS TRIGGER AS $$
+BEGIN
+    UPDATE public."LopHoc"
+    SET "SiSo" = (
+        SELECT COUNT(*)
+        FROM public."DangKi"
+        WHERE "MaLopHoc" = NEW."MaLopHoc"
+    )
+    WHERE "MaLopHoc" = NEW."MaLopHoc";
+    
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_update_si_so_lop_hoc_insert
+AFTER INSERT ON public."DangKi"
+FOR EACH ROW
+WHEN (NEW."MaLopHoc" IS NOT NULL)
+EXECUTE FUNCTION update_si_so_lop_hoc();
+
+CREATE TRIGGER trg_update_si_so_lop_hoc_delete
+AFTER delete ON public."DangKi"
+FOR EACH ROW
+WHEN (old."MaLopHoc" IS NOT NULL)
+EXECUTE FUNCTION update_si_so_lop_hoc();
