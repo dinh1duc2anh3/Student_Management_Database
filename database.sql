@@ -179,6 +179,7 @@ CREATE TABLE public."Diem"
     "DiemGK" double precision NOT NULL,
     "DiemCK" double precision NOT NULL,
     "DiemKTHP" double precision ,
+    "MaLopHoc" character varying(6) NOT NULL,
 
     CONSTRAINT "Diem_pkey" PRIMARY KEY ("MaSV","MaHP","Ky"),
 
@@ -973,3 +974,290 @@ AFTER delete ON public."DangKi"
 FOR EACH ROW
 WHEN (old."MaLopHoc" IS NOT NULL)
 EXECUTE FUNCTION update_si_so_lop_hoc();
+
+----------------------------------------------------------------TRUY VẤN------------------------------------------------------------------------------------- 
+
+--cau1 : hiển thị thông tin chi tiết bằng cách join bảng SV vs LyLichSV vs Lop , ko cần index 
+SELECT 
+    sv."MaSV",
+    sv."HoTenSV",
+    ll."NgaySinh",
+    ll."GioiTinh",
+    lop."TenLop"
+FROM 
+    public."SinhVien" sv
+JOIN 
+    public."LyLichSV" ll ON sv."MaSV" = ll."MaSV"
+JOIN 
+    public."Lop" lop ON sv."MaLop" = lop."MaLop";
+
+--cau2 : hiển thị top 3 sinh viên của lớp "Việt Pháp 01 K67" có điểm môn "Giải tích 1" lớn hơn hoặc bằng 7
+
+CREATE INDEX idx_diem_diemkthp ON public."Diem" ("DiemKTHP");
+CREATE INDEX idx_hocphan_tenhp ON public."HocPhan" ("TenHP");
+CREATE INDEX idx_lop_tenlop ON public."Lop" ("TenLop");
+
+
+EXPLAIN ANALYZE
+SELECT
+    sv."MaSV",
+    sv."HoTenSV",
+    d."DiemKTHP" AS "DiemGiaiTich1"
+FROM
+    public."SinhVien" sv
+JOIN
+    public."Lop" lop ON sv."MaLop" = lop."MaLop"
+JOIN
+    public."Diem" d ON sv."MaSV" = d."MaSV"
+JOIN
+    public."HocPhan" hp ON d."MaHP" = hp."MaHP"
+WHERE
+    lop."TenLop" = 'Việt Pháp 01 K67'
+    AND hp."TenHP" = 'Giải tích 1'
+    AND d."DiemKTHP" >= 7
+ORDER BY
+    d."DiemKTHP" DESC
+LIMIT 3;
+
+--cau3 : in ra thông tin chi tiết các sv tuổi > 19
+EXPLAIN ANALYZE
+SELECT 
+    sv."MaSV",
+    sv."HoTenSV",
+    ll."NgaySinh",
+    ll."DiaDiem" AS "QueQuan"
+FROM 
+    public."SinhVien" sv
+JOIN 
+    public."LyLichSV" ll ON sv."MaSV" = ll."MaSV"
+WHERE 
+     DATE_PART('year', AGE(ll."NgaySinh")) > 19;
+
+     --tối ưu
+        CREATE INDEX idx_ngaysinh ON public."LyLichSV" ("NgaySinh"); --tao chi mục trên cột ngày sinh, còn MaSV thì ko cần vì là khóa chính
+        drop index idx_ngaysinh;
+
+        EXPLAIN ANALYZE
+        SELECT
+            sv."MaSV",
+            sv."HoTenSV",
+            ll."NgaySinh",
+            ll."DiaDiem" AS "QueQuan"
+        FROM
+            public."SinhVien" sv
+        JOIN
+            public."LyLichSV" ll ON sv."MaSV" = ll."MaSV"
+        WHERE
+            ll."NgaySinh" < CURRENT_DATE - INTERVAL '19 years'; -- Thay vì tính toán AGE(ll."NgaySinh") và so sánh với 19, dùng trực tiếp trên cột NgaySinh để  giảm bớt phần tính toán mỗi lần thực thi truy vấn.
+
+
+--cau4 : Hien Thi Tat Ca Nhung Sinh Vien Khoa Trường Công nghệ thông tin và Truyền thông
+SELECT 
+    sv."MaSV",
+    sv."HoTenSV",
+    lop."TenLop",
+    lop."MaNganh",
+    lop."Khoa"
+FROM 
+    public."SinhVien" sv
+JOIN 
+    public."Lop" lop ON sv."MaLop" = lop."MaLop"
+WHERE 
+    lop."Khoa" = 'Trường Công nghệ thông tin và Truyền thông';
+
+
+    --tối ưu: 
+    CREATE INDEX idx_lop_khoa ON public."Lop" ("Khoa");
+
+    drop index idx_lop_khoa;
+
+--cau5 : Hien Thi Diem cua sinh vien lop viỆt nHẬT )& KHOA cntt
+SELECT 
+    sv."MaSV",
+    sv."HoTenSV",
+    d."MaHP",
+    d."DiemGK",
+    d."DiemCK",
+    d."DiemKTHP"
+FROM 
+    public."SinhVien" sv
+JOIN 
+    public."Lop" lop ON sv."MaLop" = lop."MaLop"
+JOIN 
+    public."Diem" d ON sv."MaSV" = d."MaSV"
+WHERE 
+    lop."TenLop" = 'Việt Nhật 07 K67'
+    AND lop."Khoa" = 'Trường Công nghệ thông tin và Truyền thông                                                          '
+ORDER BY 
+    d."DiemKTHP" DESC;
+
+-- ko tối ưu : CREATE INDEX idx_sv_malop ON public."SinhVien" ("MaLop"); vì sau khi thêm index lại chạy lâu hơn?
+    CREATE INDEX idx_lop_khoa ON public."Lop" ("Khoa");
+    
+--cau6 : tính trung bình điểm các môn học của các sinh viên trong lớp Công nghệ thông tin 01 K67
+SELECT 
+    sv."MaSV",
+    sv."HoTenSV",
+    AVG(d."DiemKTHP") AS "TrungBinhDiem"
+FROM 
+    public."SinhVien" sv
+JOIN 
+    public."Lop" lop ON sv."MaLop" = lop."MaLop"
+JOIN 
+    public."Diem" d ON sv."MaSV" = d."MaSV"
+WHERE 
+    lop."TenLop" = 'Công nghệ thông tin 01 K67'
+GROUP BY 
+    sv."MaSV", sv."HoTenSV";
+
+    --toi uu : 
+    
+    CREATE INDEX idx_sv_malop ON public."SinhVien" ("MaLop");
+
+--cau7 : hiển thị danh sách sinh viên phải học lại môn "Đường lối quân sự của Đảng" với điểm dưới 5
+
+SELECT
+	sv."MaSV",
+	sv."HoTenSV",
+	d."MaHP",
+	d."DiemKTHP"
+FROM
+	public."SinhVien" sv
+JOIN
+	public."Diem" d ON sv."MaSV" = d."MaSV"
+JOIN
+	public."HocPhan" hp ON d."MaHP" = hp."MaHP"
+WHERE
+	hp."TenHP" = 'Đường lối quân sự của Đảng'
+	AND d."DiemKTHP" < 5
+ORDER BY
+	d."DiemKTHP" ASC;
+
+    --toi uu: 
+    CREATE INDEX idx_diem_diemkthp ON public."Diem" ("DiemKTHP");
+    CREATE INDEX idx_hocphan_tenhp ON public."HocPhan" ("TenHP");
+
+
+
+--cau8 : đếm số lượng sinh viên của Trường Công nghệ thông tin và Truyền thông
+
+SELECT
+	COUNT(sv."MaSV") AS "SoLuongSinhVien"
+FROM
+	public."SinhVien" sv
+JOIN
+	public."Lop" lop ON sv."MaLop" = lop."MaLop"
+WHERE
+	lop."Khoa" = 'Trường Công nghệ thông tin và Truyền thông';
+
+    --toi uu :
+    CREATE INDEX idx_lop_khoa ON public."Lop" ("Khoa");
+
+
+--cau9 : đếm số lượng sinh viên của từng khoa
+
+SELECT
+	lop."Khoa",
+	COUNT(sv."MaSV") AS "SoLuongSinhVien"
+FROM
+	public."SinhVien" sv
+JOIN
+	public."Lop" lop ON sv."MaLop" = lop."MaLop"
+GROUP BY
+	lop."Khoa";
+        -- tối wuu : 
+        CREATE INDEX idx_sv_malop ON public."SinhVien" ("MaLop");
+--cau10 : Cho biet diem thap nhat cua moi mon hoc
+SELECT
+	hp."MaHP",
+	hp."TenHP" AS "MonHoc",
+	MIN(d."DiemKTHP") AS "DiemThapNhat"
+FROM
+	public."Diem" d
+JOIN
+	public."HocPhan" hp ON d."MaHP" = hp."MaHP"
+GROUP BY
+	hp."MaHP", hp."TenHP";
+
+--cau 11a : Hien Thi Chi Tiet Sinh Vien Va Diem
+-- Creating the procedure
+CREATE OR REPLACE PROCEDURE public."HienThiChiTietSV"	(IN p_MaSV integer)
+LANGUAGE plpgsql
+AS $$
+DECLARE
+    v_TenSV character varying(100);
+    v_NgaySinh date;
+    v_QueQuan character varying(100);
+    v_DiemCursor CURSOR FOR
+        SELECT
+            hp."MaHP", hp."TenHP", d."DiemGK", d."DiemCK", d."DiemKTHP", hp."Ky"
+        FROM
+            public."Diem" d
+        JOIN
+            public."HocPhanChiTiet" hp ON d."MaHP" = hp."MaHP"
+        WHERE
+            d."MaSV" = p_MaSV;
+    v_MaHP character varying(100);
+    v_TenHP character varying(100);
+    v_DiemGK integer;
+    v_DiemCK integer;
+    v_DiemKTHP integer;
+	V_Ky integer;
+BEGIN
+    -- Get student basic information
+    SELECT
+        "TenSV", "NgaySinh", "DiaDiem"
+    INTO
+        v_TenSV, v_NgaySinh, v_QueQuan
+    FROM
+        public."LyLichSV"
+    WHERE
+        "MaSV" = p_MaSV;
+    
+    -- Print student details
+    RAISE NOTICE 'Thong tin chi tiet cua sinh vien co MaSV = %:', p_MaSV;
+    RAISE NOTICE 'Ho va ten: %', v_TenSV;
+    RAISE NOTICE 'Ngay sinh: %', v_NgaySinh;
+    RAISE NOTICE 'Que quan: %', v_QueQuan;
+    RAISE NOTICE '-------------------------';
+    
+    OPEN v_DiemCursor;
+    
+    LOOP
+        FETCH v_DiemCursor INTO v_MaHP, v_TenHP, v_DiemGK, v_DiemCK, v_DiemKTHP, v_Ky;
+        EXIT WHEN NOT FOUND;
+        
+        RAISE NOTICE 'Mon hoc: % - %', v_MaHP, v_TenHP;
+		RAISE NOTICE '  Ky: %', v_Ky::text;
+        RAISE NOTICE '  Diem GK: %', COALESCE(v_DiemGK::text, 'Chua co');
+        RAISE NOTICE '  Diem CK: %', COALESCE(v_DiemCK::text, 'Chua co');
+        RAISE NOTICE '  Diem KTHP: %', COALESCE(v_DiemKTHP::text, 'Chua co');
+        RAISE NOTICE '-------------------------';
+    END LOOP;
+    
+    CLOSE v_DiemCursor;
+END;
+$$;
+
+CALL public."HienThiChiTietSV"(20210001);
+
+
+--cau 14: 
+
+SELECT
+    sv."MaSV",
+    sv."HoTenSV",
+    SUM(hp."SoTinHocPhan") AS "SoTinHocPhi"
+FROM
+    public."SinhVien" sv
+JOIN
+    public."Diem" d ON sv."MaSV" = d."MaSV"
+JOIN
+    public."HocPhan" hp ON d."MaHP" = hp."MaHP"
+GROUP BY
+    sv."MaSV", sv."HoTenSV"
+ORDER BY
+    sv."MaSV";
+
+--cau 15
+
