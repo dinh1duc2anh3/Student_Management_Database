@@ -1,0 +1,83 @@
+MaNganh,TenHP,MaHP,SoTinHocPhan,SoTinHocPhi,TrongSo,Ky
+VP,Triết học Mác-Lênin,SSH1111,3,3,0.5,1
+VP,Kinh tế chính trị Mác-Lênin,SSH1121,2,2,0.5,2
+VP,Chủ nghĩa xã hội khoa học,SSH1131,2,2,0.5,3
+VP,Lịch sử Đảng Cộng sản Việt Nam,SSH1141,2,2,0.5,4
+VP,Tư tưởng Hồ Chí Minh,SSH1151,2,2,0.5,3
+VP,Pháp luật đại cương,EM1170,2,2,0.5,6
+VP,Lý luận TDTT,PE1014,0,1.5,0.5,1
+VP,Bơi lội,PE1024,0,1.5,0.5,3
+VP,Bóng đá 1,PE2201,0,1.5,0.5,4
+VP,Bóng đá 2,PE2202,0,1.5,0.5,5
+VP,Bóng đá 3,PE2203,0,1.5,0.5,
+VP,Bóng chuyền 1,PE2101,0,1.5,0.5,5
+VP,Bóng chuyền 2,PE2102,0,1.5,0.5,
+VP,Bóng chuyền 3,PE2103,0,1.5,0.5,
+VP,Bóng rổ 1,PE2301,0,1.5,0.5,3
+VP,Bóng rổ 2,PE2302,0,1.5,0.5,4
+VP,Bóng rổ 3,PE2303,0,1.5,0.5,
+VP,Bóng bàn 1,PE2401,0,1.5,0.5,
+VP,Bóng bàn 2,PE2402,0,1.5,0.5,
+VP,Bóng bàn 3,PE2403,0,1.5,0.5,
+VP,Đường lối quân sự của Đảng,MIL1110,0,3,0.3,1
+VP,Công tác quốc phòng-an ninh,MIL1120,0,3,0.3,2
+VP,QS chung và KCT bắn súng AK,MIL1130,0,5,0.3,2
+VP,Tiếng Anh TOEIC I,FL1101,3,6,0.3,1
+VP,Tiếng Anh TOEIC II,FL1102,3,6,0.3,2
+VP,Tiếng Pháp 1,QT0413,0,12,0.7,1
+VP,Tiếng Pháp 2,QT0423,0,12,0.7,2
+VP,Tiếng Pháp 3,QT0433,0,12,0.7,3
+VP,Tiếng Pháp 4,QT0443,0,12,0.7,4
+VP,Tiếng Pháp 5,QT3413,0,7,0.7,5
+VP,Tiếng Pháp chuyên ngành 1,QT3423,3,4,0.6,5
+VP,Đại số tuyến tính,MI1144,3,3,0.3,1
+VP,Giải tích 1,MI1114,3,4,0.5,1
+VP,Giải tích 2,MI1124,3,4,0.7,2
+VP,Phương trình vi phân và Chuỗi,MI1134,3,4,0.7,4
+VP,Xác suất thống kê,MI2021,2,2,0.5,4
+VP,Vật lý đại cương,PH1110,3,4.5,0.7,2
+VP,Điện tử cho CNTT,IT3420,2,3,0.5,3
+VP,Điện tử cho CNTT lab,IT2140,2,4,0.5,3
+VP,Nhập môn CNTT và TT,IT2110,2,2,0.7,1
+VP,Kiến thức máy tính,IT2120,2,4,0.6,1
+VP,Toán rời rạc,IT3020,3,4,0.5,2
+VP,Tính toán khoa học,IT4110,3,4,0.7,4
+VP,Xử lý tín hiệu,IT4172,2,3,0.7,3
+VP,Kỹ năng ITSS 1,IT3362,2,4,0.5,7
+VP,Kỹ năng ITSS 2,IT3382,2,4,0.5,8
+VP,Ngôn ngữ lập trình C,IT3210,2,2,0.7,2
+VP,Thực hành ngôn ngữ lập trình C,IT3220,2,4,0.7,2
+VP,Nhập môn kỹ thuật truyền thông,IT4593,2,3,0.7,5
+VP,Cấu trúc dữ liệu và thuật toán,IT3011,2,3,0.6,3
+VP,Lập trình C cơ bản,IT3230,2,4,0.6,3
+VP,Thuật toán ứng dụng,IT3170,2,3.5,0.6,5
+VP,Kỹ thuật phần mềm,IT4082,2,3,0.6,6
+VP,Nguyên lý hệ điều hành,IT3070,3,4,0.6,5
+VP,Mạng máy tính,IT3080,3,4.5,0.5,5
+VP,Cơ sở dữ liệu,IT3292,2,2,0.5,4
+VP,Thực hành cơ sở dữ liệu,IT3290,2,4,0.6,4
+VP,Nhập môn Trí tuệ nhân tạo,IT3160,3,4,0.6,6
+VP,Lập trình hướng đối tượng,IT3103,3,4.5,0.5,5
+VP,Kiến trúc máy tính,IT3283,2,3,0.7,4
+VP,Thực hành kiến trúc máy tính,IT3280,2,4,0.7,4
+VP,Nhập môn an toàn thông tin,IT4015,3,4,0.6,5
+VP,Nghiên cứu tốt nghiệp 1,IT5021,2,6,1,6
+VP,Nghiên cứu tốt nghiệp 2,IT5022,2,6,1,7
+VP,Phát triển phần mềm theo chuẩn kỹ năng ITSS,IT4549,3,4,0.5,6
+VP,Thực hành Lập trình mạng,IT4062,2,4,0.5,7
+VP,Xây dựng chương trình dịch,IT3323,3,4,0.5,7
+VP,Technical Writing and Presentation,IT2030,3,4,0.5,3
+VP,Kỹ năng mềm,ED3220,2,3,0.7,5
+VP,Tâm lý học ứng dụng,ED3280,2,3,0.5,4
+VP,Thiết kế mỹ thuật công nghiệp,TEX3123,2,3,0.5,6
+VP,Công nghệ Web và dịch vụ trực tuyến,IT4409,3,4,0.6,7
+VP,Phát triển ứng dụng cho thiết bị di động,IT4785,2,3,0.6,7
+VP,Quản trị phát triển phần mềm,IT4542,2,3,0.6,8
+VP,Nhập môn Khoa học dữ liệu,IT4930,2,3,0.6,8
+VP,Học máy và khai phá dữ liệu,IT3190,3,4,0.6,7
+VP,Giao diện và trải nghiệm người dùng,IT4441,3,4,0.6,6
+VP,Hệ nhúng,IT4210,3,4.5,0.6,6
+VP,IoT và ứng dụng,IT4735,2,3,0.5,8
+VP,Thiết kế và triển khai mạng IP,IT4651,3,5,0.5,7
+VP,Thực tập công nghiệp,IT4948,2,4,0.7,7
+VP,Đồ án tốt nghiệp,IT4125,6,15,0.5,8

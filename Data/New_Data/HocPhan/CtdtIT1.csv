@@ -1,0 +1,72 @@
+MaNganh,TenHP,MaHP,SoTinHocPhan,SoTinHocPhi,TrongSo,Ky
+IT1,Triết học Mác-Lênin,SSH1111,3,3,0.5,1
+IT1,Kinh tế chính trị Mác- Lênin,SSH1121,2,2,0.5,2
+IT1,Chủ nghĩa xã hội khoa học,SSH1131,2,2,0.5,3
+IT1,Lịch sử Đảng Cộng sản Việt Nam,SSH1141,2,2,0.5,4
+IT1,Tư tưởng Hồ Chí Minh,SSH1151,2,2,0.5,3
+IT1,Pháp luật đại cương,EM1170,2,2,0.5,1
+IT1,Lý luận TDTT,PE1014,0,1.5,0.5,1
+IT1,Bơi lội,PE1024,0,1.5,0.5,3
+IT1,Bóng đá 1,PE2201,0,1.5,0.5,3
+IT1,Bóng đá 2,PE2202,0,1.5,0.5,4
+IT1,Bóng chuyền 1,PE2101,0,1.5,0.5,4
+IT1,Bóng chuyền 2,PE2102,0,1.5,0.5,5
+IT1,Bóng rổ 1,PE2301,0,1.5,0.5,5
+IT1,Bóng rổ 2,PE2302,0,1.5,0.5,
+IT1,Bóng bàn 1,PE2401,0,1.5,0.5,
+IT1,Bóng bàn 2,PE2402,0,1.5,0.5,
+IT1,Đường lối quân sự của Đảng,MIL1110,0,3,0.3,1
+IT1,Công tác quốc phòng- an ninh,MIL1120,0,3,0.3,1
+IT1,QS chung và KCT bắn súng AK,MIL1130,0,5,0.3,2
+IT1,Tiếng Anh TOEIC I,FL1101,3,6,0.3,1
+IT1,Tiếng Anh TOEIC II,FL1102,3,6,0.3,2
+IT1,Giải tích I,MI1111,4,5,0.5,1
+IT1,Giải tích II,MI1121,3,4,0.5,2
+IT1,Giải tích III,MI1131,3,4,0.5,3
+IT1,Đại số,MI1141,4,5,0.5,1
+IT1,Xác suất thống kê,MI2020,3,4,0.5,3
+IT1,Vật lý đại cương I,PH1110,3,4.5,0.7,2
+IT1,Vật lý đại cương II,PH1120,3,4.5,0.7,3
+IT1,Tin học đại cương,IT1110,3,4.5,0.7,2
+IT1,Toán rời rạc,IT3020,3,4,0.5,3
+IT1,Nhập môn các phương pháp tối ưu,MI3052,2,3,0.5,3
+IT1,Nhập môn CNTT và TT,IT2000,3,5,0.5,1
+IT1,Cấu trúc dữ liệu và thuật toán,IT3011,2,3,0.6,3
+IT1,Kiến trúc máy tính,IT3030,3,4,0.7,4
+IT1,Kỹ thuật lập trình,IT3040,2,3.5,0.6,5
+IT1,Nguyên lý hệ điều hành,IT3070,3,4,0.6,4
+IT1,Làm việc nhóm và kỹ năng giao tiếp,IT4480,2,3,0.6,4
+IT1,Mạng máy tính,IT3080,3,4.5,0.5,5
+IT1,Cơ sở dữ liệu,IT3090,3,4.5,0.5,5
+IT1,Lập trình hướng đối tượng,IT3100,2,3,0.7,4
+IT1,Thuật toán ứng dụng,IT3170,2,3.5,0.6,6
+IT1,Nhập môn Công nghệ phần mềm,IT3180,3,4,0.6,5
+IT1,Project I,IT3150,2,4,0.5,5
+IT1,Nhập môn Trí tuệ nhân tạo,IT3160,3,4,0.6,5
+IT1,Phân tích và thiết kế hệ thống,IT3120,2,3,0.6,6
+IT1,Nhập môn An toàn thông tin,IT4015,3,4,0.6,6
+IT1,Nhập môn Học máy và khai phá dữ liệu,IT3190,3,4,0.6,6
+IT1,Project II,IT3930,2,4,0.5,6
+IT1,Project III,IT3940,3,6,0.5,7
+IT1,Quản trị dự án công nghệ thông tin,IT4244,2,3,0.6,8
+IT1,Technical Writing and Presentation,IT2030,3,4,0.5,3
+IT1,Kỹ năng mềm,ED3220,2,3,0.7,4
+IT1,Tâm lý học ứng dụng,ED3280,2,3,0.5,5
+IT1,Thiết kế mỹ thuật công nghiệp,TEX3123,2,3,0.5,6
+IT1,Giao diện và trải nghiệm người dùng,IT4441,3,4,0.6,7
+IT1,Đảm bảo chất lượng phần mềm,IT4501,2,3,0.6,7
+IT1,Phát triển ứng dụng cho thiết bị di động,IT4785,2,3,0.6,7
+IT1,Kiến trúc các hệ thống thông tin và ứng dụng,IT4350,3,4,0.6,7
+IT1,Các hệ thống phân tán và ứng dụng,IT4611,2,3,0.6,7
+IT1,Hệ trợ giúp quyết định,IT4341,2,3,0.6,7
+IT1,Tìm kiếm thông tin,IT4863,3,4,0.7,
+IT1,Nhập môn Khoa học dữ liệu,IT4930,2,3,0.6,7
+IT1,Lưu trữ và xử lý dữ liệu lớn,IT4931,3,4,0.6,7
+IT1,Học sâu và ứng dụng,IT4653,2,3,0.5,7
+IT1,Tính toán tiến hóa,IT4906,3,4,0.7,7
+IT1,Công nghệ Web và dịch vụ trực tuyến,IT4409,3,4,0.6,7
+IT1,Phát triển ứng dụng đa nền tảng,IT4788,3,4,0.6,7
+IT1,Tối ưu lập kế hoạch,IT4663,3,4,0.5,7
+IT1,Hệ gợi ý,IT4613,3,4,0.5,7
+IT1,Thực tập kỹ thuật,IT4991,2,4,0.5,6
+IT1,Đồ án tốt nghiệp,IT4995,6,15,0.5,8

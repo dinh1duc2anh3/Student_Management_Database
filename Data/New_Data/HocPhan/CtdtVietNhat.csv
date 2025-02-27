@@ -1,0 +1,87 @@
+MaNganh,TenHP,MaHP,SoTinHocPhan,SoTinHocPhi,TrongSo,Ky
+VN,Triết học Mác-Lênin,SSH1111,3,3,0.5,1
+VN,Kinh tế chính trị Mác-Lênin,SSH1121,2,2,0.5,2
+VN,Chủ nghĩa xã hội khoa học,SSH1131,2,2,0.5,3
+VN,Lịch sử Đảng Cộng sản Việt Nam,SSH1141,2,2,0.5,4
+VN,Tư tưởng Hồ Chí Minh,SSH1151,2,2,0.5,3
+VN,Pháp luật đại cương,EM1170,2,2,0.5,6
+VN,Lý luận TDTT,PE1014,0,1.5,0.5,1
+VN,Bơi lội,PE1024,0,1.5,0.5,
+VN,Bóng đá 1,PE2201,0,1.5,0.5,3
+VN,Bóng đá 2,PE2202,0,1.5,0.5,4
+VN,Bóng đá 3,PE2203,0,1.5,0.5,5
+VN,Bóng chuyền 1,PE2101,0,1.5,0.5,4
+VN,Bóng chuyền 2,PE2102,0,1.5,0.5,
+VN,Bóng chuyền 3,PE2103,0,1.5,0.5,
+VN,Bóng rổ 1,PE2301,0,1.5,0.5,3
+VN,Bóng rổ 2,PE2302,0,1.5,0.5,
+VN,Bóng rổ 3,PE2303,0,1.5,0.5,
+VN,Bóng bàn 1,PE2401,0,1.5,0.5,5
+VN,Bóng bàn 2,PE2402,0,1.5,0.5,
+VN,Bóng bàn 3,PE2403,0,1.5,0.5,
+VN,Đường lối quân sự của Đảng,MIL1110,0,3,0.3,1
+VN,Công tác quốc phòng-an ninh,MIL1120,0,3,0.3,2
+VN,QS chung và KCT bắn súng AK,MIL1130,0,5,0.3,2
+VN,Tiếng Anh TOEIC I,FL1101,3,6,0.3,1
+VN,Tiếng Anh TOEIC II,FL1102,3,6,0.3,2
+VN,Tiếng Nhật 1,JP1110,0,10,0.7,1
+VN,Tiếng Nhật 2,JP1120,5,5,0.7,2
+VN,Tiếng Nhật 3,JP1132,0,6,0.7,3
+VN,Tiếng Nhật 4,JP2111,0,6,0.7,4
+VN,Tiếng Nhật 5,JP2126,2,4,0.7,5
+VN,Tiếng Nhật 6,JP2132,2,4,0.7,6
+VN,Tiếng Nhật 7,JP2210,2,4,0.7,7
+VN,Tiếng Nhật 8,JP2220,1,2,0.7,8
+VN,Tiếng Nhật chuyên ngành 1,JP3110,2,4,0.7,5
+VN,Tiếng Nhật chuyên ngành 2,JP3120,2,4,0.7,6
+VN,Đại số tuyến tính,MI1144,3,3,0.3,1
+VN,Giải tích 1,MI1114,3,4,0.5,1
+VN,Giải tích 2,MI1124,3,4,0.7,2
+VN,Phương trình vi phân và Chuỗi,MI1134,3,4,0.7,4
+VN,Xác suất thống kê,MI2021,2,2,0.5,4
+VN,Vật lý đại cương,PH1110,3,4.5,0.7,2
+VN,Điện tử cho CNTT,IT3420,2,3,0.5,3
+VN,Điện tử cho CNTT lab,IT2140,2,4,0.5,3
+VN,Nhập môn CNTT và TT,IT2110,2,2,0.7,1
+VN,Kiến thức máy tính,IT2120,2,4,0.6,1
+VN,Toán rời rạc,IT3020,3,4,0.5,2
+VN,Tính toán khoa học,IT4110,3,4,0.7,4
+VN,Xử lý tín hiệu,IT4172,2,3,0.7,3
+VN,Kỹ năng ITSS 1,IT3362,2,4,0.5,7
+VN,Kỹ năng ITSS 2,IT3382,2,4,0.5,8
+VN,Ngôn ngữ lập trình C,IT3210,2,2,0.7,2
+VN,Thực hành ngôn ngữ lập trình C,IT3220,2,4,0.7,2
+VN,Nhập môn kỹ thuật truyền thông,IT4593,2,3,0.7,5
+VN,Cấu trúc dữ liệu và thuật toán,IT3011,2,3,0.6,3
+VN,Lập trình C cơ bản,IT3230,2,4,0.6,3
+VN,Thuật toán ứng dụng,IT3170,2,3.5,0.6,5
+VN,Kỹ thuật phần mềm,IT4082,2,3,0.6,6
+VN,Nguyên lý hệ điều hành,IT3070,3,4,0.6,5
+VN,Mạng máy tính,IT3080,3,4.5,0.5,5
+VN,Cơ sở dữ liệu,IT3292,2,2,0.5,4
+VN,Thực hành cơ sở dữ liệu,IT3290,2,4,0.6,4
+VN,Nhập môn Trí tuệ nhân tạo,IT3160,3,4,0.6,6
+VN,Lập trình hướng đối tượng,IT3103,3,4.5,0.5,5
+VN,Kiến trúc máy tính,IT3283,2,3,0.7,4
+VN,Thực hành kiến trúc máy tính,IT3280,2,4,0.7,4
+VN,Nhập môn an toàn thông tin,IT4015,3,4,0.6,5
+VN,Nghiên cứu tốt nghiệp 1,IT5021,2,6,1,6
+VN,Nghiên cứu tốt nghiệp 2,IT5022,2,6,1,7
+VN,Phát triển phần mềm theo chuẩn kỹ năng ITSS,IT4549,3,4,0.5,6
+VN,Thực hành Lập trình mạng,IT4062,2,4,0.5,7
+VN,Xây dựng chương trình dịch,IT3323,3,4,0.5,7
+VN,Technical Writing and Presentation,IT2030,3,4,0.5,3
+VN,Kỹ năng mềm,ED3220,2,3,0.7,5
+VN,Tâm lý học ứng dụng,ED3280,2,3,0.5,4
+VN,Thiết kế mỹ thuật công nghiệp,TEX3123,2,3,0.5,6
+VN,Công nghệ Web và dịch vụ trực tuyến,IT4409,3,4,0.6,7
+VN,Phát triển ứng dụng cho thiết bị di động,IT4785,2,3,0.6,7
+VN,Quản trị phát triển phần mềm,IT4542,2,3,0.6,8
+VN,Nhập môn Khoa học dữ liệu,IT4930,2,3,0.6,8
+VN,Học máy và khai phá dữ liệu,IT3190,3,4,0.6,7
+VN,Giao diện và trải nghiệm người dùng,IT4441,3,4,0.6,6
+VN,Hệ nhúng,IT4210,3,4.5,0.6,6
+VN,IoT và ứng dụng,IT4735,2,3,0.5,8
+VN,Thiết kế và triển khai mạng IP,IT4651,3,5,0.5,7
+VN,Thực tập công nghiệp,IT4948,2,4,0.7,7
+VN,Đồ án tốt nghiệp,IT4125,6,15,0.5,8

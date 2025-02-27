@@ -1,0 +1,81 @@
+MaNganh,TenHP,MaHP,SoTinHocPhan,SoTinHocPhi,TrongSo,Ky
+ICT,Triết học Mác-Lênin,SSH1111,3,3,0.5,1
+ICT,Kinh tế chính trị Mác-Lênin,SSH1121,2,2,0.5,2
+ICT,Chủ nghĩa xã hội khoa học,SSH1131,2,2,0.5,3
+ICT,Lịch sử Đảng Cộng sản Việt Nam,SSH1141,2,2,0.5,4
+ICT,Tư tưởng Hồ Chí Minh,SSH1151,2,2,0.5,5
+ICT,Pháp luật đại cương,EM1170,2,2,0.5,2
+ICT,Lý luận TDTT,PE1014,0,1.5,0.5,1
+ICT,Bơi lội,PE1024,0,1.5,0.5,
+ICT,Bóng đá 1,PE2201,0,1.5,0.5,3
+ICT,Bóng đá 2,PE2202,0,1.5,0.5,4
+ICT,Bóng đá 3,PE2203,0,1.5,0.5,5
+ICT,Bóng chuyền 1,PE2101,0,1.5,0.5,
+ICT,Bóng chuyền 2,PE2102,0,1.5,0.5,
+ICT,Bóng chuyền 3,PE2103,0,1.5,0.5,
+ICT,Bóng rổ 1,PE2301,0,1.5,0.5,4
+ICT,Bóng rổ 2,PE2302,0,1.5,0.5,
+ICT,Bóng rổ 3,PE2303,0,1.5,0.5,5
+ICT,Bóng bàn 1,PE2401,0,1.5,0.5,3
+ICT,Bóng bàn 2,PE2402,0,1.5,0.5,
+ICT,Bóng bàn 3,PE2403,0,1.5,0.5,
+ICT,Đường lối quân sự của Đảng,MIL1110,0,3,0.3,1
+ICT,Công tác quốc phòng-an ninh,MIL1120,0,3,0.3,2
+ICT,QS chung và KCT bắn súng AK,MIL1130,0,5,0.3,3
+ICT,IELTS Listening 1,FL1120,2,3,0.5,2
+ICT,IELTS Speaking 1,FL1121,1,2,0.5,2
+ICT,IELTS Reading 1,FL1122,1,2,0.5,2
+ICT,IELTS Writing 1,FL1123,2,3,0.5,3
+ICT,IELTS Listening 2,FL1124,2,3,0.5,3
+ICT,IELTS Speaking 2,FL1125,1,2,0.5,3
+ICT,IELTS Reading 2,FL1126,1,2,0.5,3
+ICT,IELTS Writing 2,FL1127,2,3,0.5,3
+ICT,Algebra,MI1144E,3,3,0.3,1
+ICT,Caculus 1,MI1114E,3,4,0.5,1
+ICT,Caculus 2,MI1124E,3,4,0.7,2
+ICT,Derivative equations and series,MI1134E,3,4,0.7,2
+ICT,Probability and Statistic 1,MI2020E,2,2,0.5,3
+ICT,Physics 1,PH1110E,3,4.5,0.7,3
+ICT,Electronics for Information Technology,IT3420E,2,3,0.5,4
+ICT,Electronics for Information Technology lab,IT2140E,2,4,0.5,4
+ICT,Introduction to ICT,IT2110,2,2,0.7,1
+ICT,Computer Literacy,IT2120,2,4,0.6,1
+ICT,Discrete Math,IT3020E,3,4,0.5,3
+ICT,Scientific computing,IT4110E,3,4,0.7,4
+ICT,Signal processing,IT4172E,2,3,0.7,6
+ICT,C Programming Language,IT3210,2,2,0.7,3
+ICT,C Programming Language Lab,IT3220,2,4,0.7,3
+ICT,Introduction to Communication Engineering,IT4593E,2,3,0.7,5
+ICT,Data Structures and Algorithms,IT3312E,2,3,0.6,4
+ICT,Data Structures and Algorithms Basic Lab,IT3230E,2,4,0.6,4
+ICT,Applied Algorithms,IT3170E,2,3.5,0.6,5
+ICT,Software Engineering,IT4082E,2,3,0.6,6
+ICT,Operating Systems,IT3070E,3,4,0.6,5
+ICT,Computer Networks,IT3080E,3,4.5,0.5,6
+ICT,Database,IT3292E,2,2,0.5,5
+ICT,Database Lab,IT3290E,2,4,0.6,5
+ICT,Introduction to Artificial Intelligence,IT3160E,3,4,0.6,4
+ICT,Object Oriented Language and Theory (Java),IT3100E,3,4.5,0.5,4
+ICT,Computer Architecture,IT3283E,2,3,0.7,5
+ICT,Assembly Language and Computer Architecture Lab,IT3280E,2,4,0.7,5
+ICT,Introduction to Information Security,IT4015E,3,4,0.6,7
+ICT,Graduation Research 1,IT5023E,2,6,1,5
+ICT,Graduation Research 2,IT5024E,2,6,1,7
+ICT,ITSS Software Development,IT4549E,3,4,0.5,6
+ICT,Network Programming,IT4062E,2,4,0.5,7
+ICT,Compiler Construction,IT3323E,3,4,0.5,6
+ICT,Technical Writing and Presentation,IT2030,3,4,0.5,3
+ICT,Kỹ năng mềm,ED3220,2,3,0.7,4
+ICT,Tâm lý học ứng dụng,ED3280,2,3,0.5,6
+ICT,Thiết kế mỹ thuật công nghiệp,TEX3123,2,3,0.5,5
+ICT,Web technologies and e-Services,IT4409E,3,4,0.6,6
+ICT,Mobile Programming,IT4785E,2,3,0.6,7
+ICT,Management of Software Development,IT4542E,2,2,0.6,7
+ICT,Introduction to Data Science,IT4142E,2,3,0.6,7
+ICT,Machine Learning and Data Mining,IT3191E,3,4.5,0.6,6
+ICT,User Interface and User Experience,IT4441E,3,4,0.6,7
+ICT,Embedded Systems,IT4210E,3,4.5,0.6,6
+ICT,IoT and Applications,IT4735E,2,3,0.5,7
+ICT,IP Network Design and Implementation,IT4651E,3,5,0.5,7
+ICT,ITSS Internship,IT4948E,2,4,0.7,6
+ICT,Bachelor Thesis,IT4125E,6,15,0.5,8
